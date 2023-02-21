@@ -1,4 +1,4 @@
-import { FaSign, FaSignInAlt, FaSignOutAlt, FaUser } from "react-icons/fa";
+import { FaSignInAlt, FaSignOutAlt, FaUser } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout, reset } from "../features/auth/authSlice";
@@ -15,37 +15,44 @@ function Header() {
     navigate("/");
   };
   return (
-    <header className="flex bg-neutral-100 w-[100%] justify-between items-center p-6 border border-b-8 border-yellow-200">
-      <div>
-        <Link to="/">
-          <img src={logo} alt="logo" className="w-[200px]" />
-        </Link>
+    <header className=" bg-blue-50 text-xl">
+      <div className=" flex justify-between align-middle my-10">
+        <div>
+          <Link to="/">
+            <img
+              src={logo}
+              alt="logo"
+              className="w-[200px] ml-20 bg-transparent"
+            />
+          </Link>
+        </div>
+        <ul className="flex mr-20 gap-5 my-auto">
+          {user ? (
+            <li>
+              <button onClick={onLogout}>
+                <FaSignOutAlt />
+                Logout
+              </button>
+            </li>
+          ) : (
+            <>
+              <li className=" hover:opacity-70">
+                <Link to="/login">
+                  <FaSignInAlt />
+                  Login
+                </Link>
+              </li>
+              <li className="hover:opacity-70">
+                <Link to="/register">
+                  <FaUser />
+                  Register
+                </Link>
+              </li>
+            </>
+          )}
+        </ul>
       </div>
-      <ul className="flex gap-5 text-xl">
-        {user ? (
-          <li>
-            <button onClick={onLogout}>
-              <FaSignOutAlt />
-              Logout
-            </button>
-          </li>
-        ) : (
-          <>
-            <li className=" hover:opacity-70">
-              <Link to="/login">
-                <FaSignInAlt />
-                Login
-              </Link>
-            </li>
-            <li className="hover:opacity-70">
-              <Link to="/register">
-                <FaUser />
-                Register
-              </Link>
-            </li>
-          </>
-        )}
-      </ul>
+      <hr className=" text-black bg-black h-1 opacity-60" />
     </header>
   );
 }
