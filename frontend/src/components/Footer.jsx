@@ -1,10 +1,9 @@
 import React from "react";
-import logo from "../img/logo/box.png";
+import logo from "../img/logo/box1.png";
 
 function Footer() {
   return (
     <>
-      <hr className=" text-black bg-black h-1 opacity-60 mb-20 mt-40" />
       <footer className="bg-slate-50 text-2xl pb-10">
         <div className="flex justify-between align-middle my-10">
           <div className="flex flex-col text-center ml-20">

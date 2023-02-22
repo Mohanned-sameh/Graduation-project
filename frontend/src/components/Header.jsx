@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout, reset } from "../features/auth/authSlice";
 import { useNavigate } from "react-router-dom";
-import logo from "../img/logo/box.png";
+import logo from "../img/logo/box1.png";
 function Header() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -16,7 +16,7 @@ function Header() {
   };
   return (
     <header className=" bg-blue-50 text-xl">
-      <div className=" flex justify-between align-middle my-10">
+      <div className=" flex justify-between align-middle">
         <div>
           <Link to="/">
             <img
@@ -52,7 +52,6 @@ function Header() {
           )}
         </ul>
       </div>
-      <hr className=" text-black bg-black h-1 opacity-60" />
     </header>
   );
 }
