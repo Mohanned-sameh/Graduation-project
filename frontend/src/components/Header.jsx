@@ -15,23 +15,26 @@ function Header() {
     navigate("/");
   };
   return (
-    <header className=" bg-blue-50 text-xl">
-      <div className=" flex justify-between align-middle">
-        <div>
-          <Link to="/">
-            <img
-              src={logo}
-              alt="logo"
-              className="w-[200px] ml-20 bg-transparent"
-            />
-          </Link>
-        </div>
-        <ul className="flex mr-20 gap-5 my-auto">
+    <header className=" bg-gray-300 text-xl border-b-4 border-zinc-500 border-opacity-50">
+      <div className=" flex justify-between align-middle mx-20 max-sm:hidden ">
+        <Link to="/" className="ml-20">
+          <img
+            src={logo}
+            alt="logo"
+            className=" w-44 bg-transparent hover:w-48 transition-all duration-500 hover:opacity-75"
+          />
+        </Link>
+        <ul className="flex mr-20 gap-5 my-auto text-green-800 opacity-90 ">
           {user ? (
-            <li>
+            <li className="text-left flex flex-col">
+              <div>
+                <h1>Welcome {user.firstName}</h1>
+              </div>
               <button onClick={onLogout}>
-                <FaSignOutAlt />
-                Logout
+                <div className="flex gap-1 align-middle ml-10 hover:opacity-80">
+                  <FaSignOutAlt className="mt-1" />
+                  Logout
+                </div>
               </button>
             </li>
           ) : (

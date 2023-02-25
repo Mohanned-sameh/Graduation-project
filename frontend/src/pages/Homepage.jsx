@@ -1,39 +1,33 @@
-import backGround from "../img/otherImages/blue2.png";
+import background from "../img/otherImages/original.jpg";
 import IMAGES from "../images.js";
 import { Link } from "react-router-dom";
-import { BiFoodMenu } from "react-icons/bi";
 function Homepage() {
   return (
     <>
-      <section>
-        <div className="mb-40">
-          <img
-            className="opacity-80 w-full"
-            src={backGround}
-            alt="background"
-          />
+      <section
+        className="bg-gray-300 w-full py-[15rem] mb-40 flex align-middle justify-center bg-cover bg-no-repeat overflow-auto"
+        style={{ backgroundImage: `url(${background})` }}
+      >
+        <div className="text-center underline p-2 text-4xl bg-gradient-to-r animate-text from-green-500 to-black text-transparent italic bg-clip-text">
+          <p>
+            A genuine fine-dining experience awaits <br />
+            <button
+              className="border-4 border-opacity-10 border-green-600 hover:border-green-500 mt-4 p-5 rounded-[1.3em] ease-in-out transition-all duration-500
+            "
+            >
+              <Link to="/restaurants">You Here</Link>
+            </button>
+          </p>
         </div>
       </section>
-      <section className="flex flex-col justify-center text-center items-center text-4xl my-40">
-        <div>
-          <h3>About Us</h3>
-          <p></p>
-        </div>
-        <Link to="/restaurants">
-          <h3 className=" transition-all duration-500 ease-in-out hover:text-green-400 border-4 hover:text-3xl text-xl rounded-full bg-cyan-100 p-10 text-[24px] text-green-600 ">
-            Find what suits you
-            <BiFoodMenu className="m-auto" />
-          </h3>
-        </Link>
-      </section>
-      <section className="flex justify-center my-40 mx-2">
+      <section className="flex justify-center mx-4 mb-40 py-16 border-t-zinc-600 border-b-zinc-600 border-4 border-opacity-50 rounded-full p-4">
         {IMAGES &&
           IMAGES.map((item) => (
             <div key={item.id} className="lg:m-4">
               <img
                 src={item.image}
                 alt="logo"
-                className="aspect-square w-40 rounded-full hover:w-48 ease-in-out transition-all duration-500"
+                className="aspect-square h-28 rounded-full hover:h-32 ease-in-out transition-all duration-500"
               />
             </div>
           ))}

@@ -46,35 +46,47 @@ function Login() {
   }
   return (
     <>
-      <section className="gap-5 flex flex-col flex-wrap mx-6 my-6 text-center text-3xl">
-        <p>Login and reserve your table</p>
-      </section>
-      <section className="flex flex-col justify-center align-middle mt-10 mx-auto text-center py-8 my-auto">
-        <form onSubmit={onSubmit}>
-          <div className="form-group">
+      <section className="flex mb-20 mt-10 border-4 border-green-400 border-opacity-40 rounded-3xl flex-col text-center mx-52 pb-20">
+        <div className="flex flex-col text-2xl mt-10">
+          <h1 className="font-bold flex justify-center gap-2">Login</h1>
+          <p className="italic">start finding your favourite food</p>
+        </div>
+        <form
+          className=" flex flex-col py-10 mx-auto gap-10 text-xl text-green-800"
+          onSubmit={onSubmit}
+        >
+          <div className="flex flex-col text-left">
+            <label htmlFor="email">Email</label>
             <input
               type="email"
-              className="form-control"
-              id="email"
               name="email"
+              id="email"
               value={email}
-              placeholder="Enter your email"
+              placeholder="Email"
+              className="outline-none transition-all duration-500 rounded-full p-2 my-1 focus:p-4 focus:w-full outline-2 outline-slate-500 outline-opacity-25"
               onChange={onChange}
             />
           </div>
-          <div className="form-group">
+          <div className="flex flex-col text-left">
+            <label htmlFor="password">Password</label>
             <input
               type="password"
-              className="form-control"
-              id="password"
               name="password"
+              id="password"
               value={password}
-              placeholder="Enter password"
+              placeholder="Password"
+              className="outline-none transition-all duration-500 rounded-full p-2 my-1 focus:p-4 focus:w-full outline-2 outline-slate-500 outline-opacity-25"
               onChange={onChange}
             />
           </div>
-          <div className="form-group">
-            <button type="submit">Submit</button>
+
+          <div>
+            <button
+              type="submit"
+              className=" hover:w-40 border-4 border-green-400 border-opacity-35 w-32 py-2 transition-all duration-500 hover:p-3 rounded-2xl"
+            >
+              Submit
+            </button>
           </div>
         </form>
       </section>

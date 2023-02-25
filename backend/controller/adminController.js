@@ -7,8 +7,8 @@ const adminModel = require("../models/adminModel");
 // @route POST /api/admins
 // @access Private
 const registerAdmin = asyncHandler(async (req, res) => {
-  const { firstName, lastName, email, password } = req.body;
-  if (!firstName || !lastName || !email || !password) {
+  const { firstName, lastName, email, password, phoneNumber } = req.body;
+  if (!firstName || !lastName || !email || !password || !phoneNumber) {
     res.status(400);
     throw new Error("Please provide all fields");
   }
@@ -29,6 +29,7 @@ const registerAdmin = asyncHandler(async (req, res) => {
     lastName,
     email,
     password: hashedPassword,
+    phoneNumber,
     isAdmin,
   });
   if (admin) {
@@ -38,6 +39,7 @@ const registerAdmin = asyncHandler(async (req, res) => {
       lastName: admin.lastName,
       email: admin.email,
       token: generateToken(admin._id),
+      phoneNumber: admin.phoneNumber,
       isAdmin: admin.isAdmin,
     });
   } else {
@@ -57,6 +59,7 @@ const loginAdmin = asyncHandler(async (req, res) => {
       firstName: admin.firstName,
       lastName: admin.lastName,
       email: admin.email,
+      phoneNumber: admin.phoneNumber,
       token: generateToken(admin._id),
       isAdmin: admin.isAdmin,
     });
