@@ -14,10 +14,18 @@ function Login() {
   );
   useEffect(() => {
     if (isError) {
-      toast.error(message);
+      toast.error(message, {
+        toastId: "error",
+        position: "top-center",
+      });
     }
     if (isSuccess || user) {
+      toast(`Welcome ${user.firstName}`, {
+        toastId: "success",
+        position: "top-center",
+      });
       navigate("/");
+      console.log(user);
     }
     dispatch(reset);
   }, [user, isError, isSuccess, message, navigate, dispatch]);

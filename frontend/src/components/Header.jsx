@@ -4,12 +4,17 @@ import { useSelector, useDispatch } from "react-redux";
 import { logout, reset } from "../features/auth/authSlice";
 import { useNavigate } from "react-router-dom";
 import logo from "../img/logo/box1.png";
+import { toast } from "react-toastify";
 function Header() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
 
   const onLogout = () => {
+    toast("Logged out Successfully", {
+      toastId: "logout",
+      position: "top-center",
+    });
     dispatch(logout());
     dispatch(reset());
     navigate("/");
@@ -21,7 +26,7 @@ function Header() {
           <img
             src={logo}
             alt="logo"
-            className=" w-44 bg-transparent hover:w-48 transition-all duration-500 hover:opacity-75"
+            className=" w-44 bg-transparent transition-all duration-500 hover:animate-pulse"
           />
         </Link>
         <ul className="flex mr-20 gap-5 my-auto text-green-800 opacity-90 ">

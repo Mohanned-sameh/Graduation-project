@@ -5,22 +5,22 @@ function Homepage() {
   return (
     <>
       <section
-        className="bg-gray-300 w-full py-[15rem] mb-40 flex align-middle justify-center bg-cover bg-no-repeat overflow-auto"
+        className="bg-gray-300 w-full py-[10rem] mb-36 flex align-middle justify-center bg-cover bg-no-repeat overflow-auto"
         style={{ backgroundImage: `url(${background})` }}
       >
-        <div className="text-center underline p-2 text-4xl bg-gradient-to-r animate-text from-green-500 to-black text-transparent italic bg-clip-text">
-          <p>
-            A genuine fine-dining experience awaits <br />
+        <div className="text-center underline p-2 text-4xl bg-gradient-to-r animate-text from-green-500 to-orange-500 text-transparent italic bg-clip-text">
+          <p>A genuine fine-dining experience awaits</p>
+          <Link to="/restaurants">
             <button
-              className="border-4 border-opacity-10 border-green-600 hover:border-green-500 mt-4 p-5 rounded-[1.3em] ease-in-out transition-all duration-500
+              className="border-4 border-opacity-10 border-green-300 hover:border-green-500 mt-4 p-5 rounded-[1.3em] ease-in-out transition-all duration-500 bg-black bg-opacity-10 hover:bg-opacity-0
             "
             >
-              <Link to="/restaurants">You Here</Link>
+              You Here
             </button>
-          </p>
+          </Link>
         </div>
       </section>
-      <section className="flex justify-center mx-4 mb-40 py-16 border-t-zinc-600 border-b-zinc-600 border-4 border-opacity-50 rounded-full p-4">
+      <section className="flex justify-center mx-4 mb-40 py-10 hover:py-12 transition-all duration-500 border-t-zinc-600 border-b-zinc-600 border-4 border-opacity-50 rounded-full p-4">
         {IMAGES &&
           IMAGES.map((item) => (
             <div key={item.id} className="lg:m-4">

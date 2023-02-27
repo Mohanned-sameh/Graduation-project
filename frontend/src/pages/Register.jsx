@@ -26,9 +26,15 @@ function Register() {
   );
   useEffect(() => {
     if (isError) {
-      toast.error(message);
+      toast.error(message, {
+        toastId: "error",
+      });
     }
     if (isSuccess || user) {
+      toast(`Welcome ${user.firstName}`, {
+        toastId: "success",
+        position: "top-center",
+      });
       navigate("/");
     }
     dispatch(reset);
@@ -44,7 +50,10 @@ function Register() {
     e.preventDefault();
 
     if (password !== passwordConfirm) {
-      toast.error("Passwords do not match");
+      toast.error("Passwords do not match", {
+        toastId: "error",
+        position: "top-center",
+      });
     } else {
       const userData = {
         firstName,
@@ -74,7 +83,7 @@ function Register() {
           onSubmit={onSubmit}
         >
           <div className="flex flex-col text-left">
-            <label htmlFor="firstName">first name</label>
+            <label htmlFor="firstName">First name</label>
             <input
               type="text"
               name="firstName"
@@ -82,6 +91,7 @@ function Register() {
               value={firstName}
               placeholder="First name"
               onChange={onChange}
+              required
               className="outline-none transition-all duration-500 rounded-full my-1 p-2 focus:p-4 focus:w-full outline-2 outline-slate-500 outline-opacity-25"
             />
           </div>
@@ -92,6 +102,7 @@ function Register() {
               name="lastName"
               id="lastName"
               value={lastName}
+              required
               placeholder="Last name"
               onChange={onChange}
               className="outline-none transition-all duration-500 rounded-full p-2 my-1 focus:p-4 focus:w-full outline-2 outline-slate-500 outline-opacity-25"
@@ -103,6 +114,7 @@ function Register() {
               type="email"
               name="email"
               id="email"
+              required
               value={email}
               placeholder="Email"
               className="outline-none transition-all duration-500 rounded-full p-2 my-1 focus:p-4 focus:w-full outline-2 outline-slate-500 outline-opacity-25"
@@ -115,6 +127,7 @@ function Register() {
               type="text"
               name="phoneNumber"
               id="phoneNumber"
+              required
               value={phoneNumber}
               placeholder="ex:+201026371183"
               className="outline-none transition-all duration-500 rounded-full p-2 my-1 focus:p-4 focus:w-full outline-2 outline-slate-500 outline-opacity-25"
@@ -126,6 +139,7 @@ function Register() {
             <input
               type="password"
               name="password"
+              required
               id="password"
               value={password}
               placeholder="Password"
@@ -139,6 +153,7 @@ function Register() {
               type="password"
               name="passwordConfirm"
               id="passwordConfirm"
+              required
               value={passwordConfirm}
               placeholder="Confirm password"
               className="outline-none transition-all duration-500 rounded-full p-2 my-1 focus:p-4 focus:w-full outline-2 outline-slate-500 outline-opacity-25"

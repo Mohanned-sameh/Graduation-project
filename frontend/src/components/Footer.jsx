@@ -7,7 +7,7 @@ function Footer() {
       <footer className="text-2xl pb-10 bg-gray-300">
         <div className="w-full flex justify-center">
           <hr
-            className="bg-black w-[85%] rounded-full h-3 opacity-40
+            className="bg-black w-full h-3 opacity-40
       "
           />
         </div>
