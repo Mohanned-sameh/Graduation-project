@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout, reset } from "../features/auth/authSlice";
 import { useNavigate } from "react-router-dom";
-import logo from "../img/logo/box1.png";
+import logo from "../img/logo/box-2.png";
 import { toast } from "react-toastify";
 function Header() {
   const navigate = useNavigate();
@@ -20,18 +20,21 @@ function Header() {
     navigate("/");
   };
   return (
-    <header className=" bg-gray-300 text-xl border-b-4 border-zinc-500 border-opacity-50">
-      <div className=" flex justify-between align-middle mx-20 max-sm:hidden ">
-        <Link to="/" className="ml-20">
+    <header
+      className="text-xl border-b-4 rounded-sm border-orange-400"
+      style={{ backgroundColor: "wheat" }}
+    >
+      <div className=" flex justify-between max-sm:mx-0 lg:mx-20">
+        <Link to="/" className="ml-20 max-sm:ml-10 max-md:ml-0">
           <img
             src={logo}
             alt="logo"
-            className=" w-44 bg-transparent transition-all duration-500 hover:animate-pulse"
+            className=" w-44 transition-all duration-500 hover:animate-pulse"
           />
         </Link>
-        <ul className="flex mr-20 gap-5 my-auto text-green-800 opacity-90 ">
+        <ul className="mr-20 gap-5 my-auto text-green-700 max-md:mr-10">
           {user ? (
-            <li className="text-left flex flex-col">
+            <li className="text-left flex flex-col max-sm:text-center">
               <div>
                 <h1>Welcome {user.firstName}</h1>
               </div>
@@ -43,20 +46,20 @@ function Header() {
               </button>
             </li>
           ) : (
-            <>
+            <div className="flex gap-5 mt-2">
               <li className=" hover:opacity-70">
                 <Link to="/login">
-                  <FaSignInAlt />
+                  <FaSignInAlt className="m-auto" />
                   Login
                 </Link>
               </li>
               <li className="hover:opacity-70">
                 <Link to="/register">
-                  <FaUser />
+                  <FaUser className="m-auto" />
                   Register
                 </Link>
               </li>
-            </>
+            </div>
           )}
         </ul>
       </div>

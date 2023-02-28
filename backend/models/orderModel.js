@@ -14,6 +14,10 @@ const orderSchema = mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "Restaurant",
     },
+    people: {
+      type: Number,
+      required: true,
+    },
   },
   {
     timestamps: true,

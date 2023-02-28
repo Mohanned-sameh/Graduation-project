@@ -54,7 +54,7 @@ function Login() {
   }
   return (
     <>
-      <section className="flex mb-20 mt-10 border-4 border-green-400 border-opacity-40 rounded-3xl flex-col text-center mx-52 pb-20">
+      <section className="flex mb-20 mt-10 border-4 max-sm:w-full max-md:w-full max-md:m-0 max-sm:m-0 border-green-400 border-opacity-40 rounded-3xl flex-col text-center mx-52 pb-20">
         <div className="flex flex-col text-2xl mt-10">
           <h1 className="font-bold flex justify-center gap-2">Login</h1>
           <p className="italic">start finding your favourite food</p>

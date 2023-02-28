@@ -17,7 +17,9 @@ const addRestaurant = asyncHandler(async (req, res) => {
     !req.body.title ||
     !req.body.locations ||
     !req.body.type ||
-    !req.body.logo
+    !req.body.logo ||
+    !req.body.discount ||
+    !req.body.rate
   ) {
     res.status(400);
     throw new Error("Please add all inputs");
@@ -27,6 +29,8 @@ const addRestaurant = asyncHandler(async (req, res) => {
     title: req.body.title,
     locations: req.body.locations,
     type: req.body.type,
+    rate: req.body.rate,
+    discount: req.body.discount,
   });
   res.status(200).json(restaurant);
 });
@@ -64,7 +68,7 @@ const deleteRestaurant = asyncHandler(async (req, res) => {
 });
 // @desc get restaurant
 // @access Private
-// @Route /api/Details
+// @Route /api/Details/:id
 const restaurantDetails = asyncHandler(async (req, res) => {
   const restaurant = await restaurantModel.findById(req.params.id);
   if (!restaurant) {

@@ -22,5 +22,11 @@ const restaurantSchema = mongoose.Schema({
       required: [true, "please insert your restaurant location"],
     },
   ],
+  rate: {
+    type: Number,
+  },
+  discount: {
+    type: Boolean,
+  },
 });
 module.exports = mongoose.model("restaurant", restaurantSchema);

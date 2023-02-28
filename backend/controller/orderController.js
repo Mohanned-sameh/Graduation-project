@@ -9,13 +9,14 @@ const getOrder = asyncHandler(async (req, res) => {
 });
 
 const setOrder = asyncHandler(async (req, res) => {
-  if (!req.body.orderTime) {
+  if (!req.body.orderTime || !req.body.people) {
     res.status(400);
-    throw new Error("Please set a date/time");
+    throw new Error("Please fill all the fields");
   }
   const order = await Order.create({
     orderTime: new Date(req.body.orderTime),
     user: req.user,
+    people: req.people,
     restuarant: req.params.id,
   });
   res.status(200).json(order);
