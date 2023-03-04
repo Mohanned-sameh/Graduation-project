@@ -11,7 +11,7 @@ function RestaurantItem({ restaurant }) {
         />
       </div>
       <div className="text-lg text-left px-5 py-2">
-        <div className="flex flex-col align-middle justify-evenly gap-2">
+        <div className="flex flex-col align-middle justify-evenly gap-2 w-40">
           <h1>Title: {restaurant.title}</h1>
           <h4>Type: {restaurant.type}</h4>
           <h5 className=" ">

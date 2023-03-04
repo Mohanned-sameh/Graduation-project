@@ -36,7 +36,7 @@ function Restaurants() {
       <div className=" flex w-full justify-center">
         <div className="flex w-[80%] py-10 px-16 flex-col">
           <div className="text-2xl font-semibold underline underline-offset-auto bg-opacity-60 shadow-xl text-green-800 opacity-90 shadow-orange-300 w-full mb-10 border-4 rounded-full p-8 border-x-0 border-orange-600">
-            <h2>Hot deals</h2>
+            <h2 className="ml-10">Hot deals</h2>
           </div>
           {restaurants.length > 0 ? (
             <div className="w-full border-2 rounded-3xl border-orange-500  mb-20 shadow-xl max-sm:py-10 max-sm:px-2 max-sm:mx-0 shadow-orange-400 justify-start gap-5 max-sm:my-10 flex py-10 flex-wrap ">
@@ -49,7 +49,7 @@ function Restaurants() {
                     />
                   </Link>
                 ) : (
-                  <></>
+                  ""
                 );
               })}
             </div>
@@ -57,7 +57,7 @@ function Restaurants() {
             <></>
           )}
           <div className="text-2xl font-semibold underline underline-offset-auto bg-opacity-60 shadow-xl text-green-800 opacity-90 shadow-orange-300 w-full mb-20 border-4 rounded-full p-8 border-x-0 border-orange-600">
-            <h2>All Restaurants</h2>
+            <h2 className="ml-10">All Restaurants</h2>
           </div>
           <div className="flex flex-col jusify-start mb-10 px-5 gap-10  max-sm:p-2">
             {/* <div className="flex gap-1 outline-none transition-all duration-500  justify-center w-full p-2 my-1 hover:py-3 rounded-full outline-opacity-25 outline-slate-500 outline-2">
@@ -84,7 +84,7 @@ function Restaurants() {
                         />
                       </Link>
                     ) : (
-                      <></>
+                      ""
                     );
                   })}
                 </>

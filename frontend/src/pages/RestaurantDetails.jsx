@@ -3,7 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import Spinner from "../components/Spinner";
-import { getRestaurantDetails } from "../features/restaurants/restaurantsSlice";
+import {
+  getRestaurantDetails,
+  reset,
+} from "../features/restaurants/restaurantsSlice";
 
 function RestaurantDetails() {
   const { id } = useParams();
@@ -23,6 +26,10 @@ function RestaurantDetails() {
       navigate("/login");
     }
     dispatch(getRestaurantDetails(id));
+
+    return () => {
+      dispatch(reset);
+    };
   }, [id, dispatch, isError, message, user, navigate]);
   if (isLoading) {
     <Spinner />;
@@ -39,7 +46,7 @@ function RestaurantDetails() {
         </div>
         <div className="w-full flex justify-center align-middle mb-10 border-2 p-16 rounded-3xl">
           <div className="flex gap-3 flex-col text-xl font-normal">
-            <pre className="text-2xl whitespace-pre-wrap leading-relaxed font-black ">
+            <pre className="text-2xl whitespace-pre-wrap leading-relaxed font-black text-left">
               {description}
             </pre>
             <div className="flex flex-col text-left mx-auto align-middle justify-center gap-4 my-5">

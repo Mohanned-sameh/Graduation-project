@@ -5,15 +5,15 @@ const IMAGES = [
   },
   {
     id: 2,
-    image: "restaurantsImages/cinnabon.jpg",
+    image: "restaurantsImages/dosBros.png",
   },
   {
     id: 3,
-    image: "restaurantsImages/dunkinDonuts.jpg",
+    image: "restaurantsImages/theWok.png",
   },
   {
     id: 4,
-    image: "restaurantsImages/lokali.png",
+    image: "restaurantsImages/caffecasa.png",
   },
   {
     id: 5,
@@ -25,7 +25,7 @@ const IMAGES = [
   },
   {
     id: 7,
-    image: "restaurantsImages/caffecasa.png",
+    image: "restaurantsImages/lokali.png",
   },
   {
     id: 8,
