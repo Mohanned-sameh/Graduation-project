@@ -13,8 +13,7 @@ export const createRestaurant = createAsyncThunk(
   "restaurants/create",
   async (restaurantData, thunkAPI) => {
     try {
-      const token = thunkAPI.getState().auth.admin.token;
-      return await restaurantService.createRestaurant(restaurantData, token);
+      return await restaurantService.createRestaurant(restaurantData);
     } catch (error) {
       const message =
         (error.response &&
@@ -32,6 +31,7 @@ export const getRestaurants = createAsyncThunk(
   "restaurants/getAll",
   async (_, thunkAPI) => {
     try {
+      // return await restaurantService.getRestaurants();
       return await restaurantService.getRestaurants();
     } catch (error) {
       const message =
@@ -50,8 +50,8 @@ export const getRestaurantDetails = createAsyncThunk(
   "restaurants/details",
   async (restaurantId, thunkAPI) => {
     try {
-      const token = thunkAPI.getState().auth.user.token;
-      return await restaurantService.restaurantDetails(restaurantId, token);
+      return await restaurantService.restaurantDetails(restaurantId);
+      // return await restaurantService.restaurantDetails(restaurantId);
     } catch (error) {
       const message =
         (error.response &&
@@ -69,8 +69,7 @@ export const deleteRestaurant = createAsyncThunk(
   "restaurants/delete",
   async (id, thunkAPI) => {
     try {
-      const token = thunkAPI.getState().auth.admin.token;
-      return await restaurantService.deleteRestaurant(id, token);
+      return await restaurantService.deleteRestaurant(id);
     } catch (error) {
       const message =
         (error.response &&
@@ -84,14 +83,12 @@ export const deleteRestaurant = createAsyncThunk(
 );
 // edit restaurant
 export const editRestaurant = createAsyncThunk(
-  "restaurnt/edit",
+  "restaurnts/edit",
   async (restaurantId, restaurantDetails, thunkAPI) => {
     try {
-      const token = thunkAPI.getState().auth.admin.token;
       return await restaurantService.editRestaurant(
         restaurantId,
-        restaurantDetails,
-        token
+        restaurantDetails
       );
     } catch (error) {
       const message =
@@ -119,7 +116,7 @@ export const restaurantSlice = createSlice({
       .addCase(createRestaurant.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.message = action.payload;
+        state.restaurants.push(action.payload);
       })
       .addCase(createRestaurant.rejected, (state, action) => {
         state.isLoading = false;
@@ -132,7 +129,7 @@ export const restaurantSlice = createSlice({
       .addCase(getRestaurants.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.message = action.payload;
+        state.restaurants = action.payload;
       })
       .addCase(getRestaurants.rejected, (state, action) => {
         state.isLoading = false;
@@ -145,7 +142,7 @@ export const restaurantSlice = createSlice({
       .addCase(getRestaurantDetails.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.message = action.payload;
+        state.restaurants = action.payload;
       })
       .addCase(getRestaurantDetails.rejected, (state, action) => {
         state.isLoading = false;
@@ -158,7 +155,9 @@ export const restaurantSlice = createSlice({
       .addCase(deleteRestaurant.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.message = action.payload;
+        state.restaurants = state.restaurants.filter(
+          (restaurant) => restaurant._id !== action.payload.id
+        );
       })
       .addCase(deleteRestaurant.rejected, (state, action) => {
         state.isLoading = false;
@@ -171,7 +170,7 @@ export const restaurantSlice = createSlice({
       .addCase(editRestaurant.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.message = action.payload;
+        state.restaurants = action.payload;
       })
       .addCase(editRestaurant.rejected, (state, action) => {
         state.isLoading = false;

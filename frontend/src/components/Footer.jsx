@@ -5,8 +5,8 @@ function Footer() {
   return (
     <>
       <footer
-        className="text-2xl pb-10 text-green-700 rounded-sm border-t-4 border-orange-300"
-        style={{ backgroundColor: "wheat" }}
+        className="text-2xl pb-10 text-green-700 rounded-sm border-t-2 border-green-400"
+        // style={{ backgroundColor: "wheat" }}
       >
         <div className="w-full flex justify-center"></div>
         <div className="flex justify-between align-middle mx-36 max-sm:mx-0 max-md:mx-0 mt-10">

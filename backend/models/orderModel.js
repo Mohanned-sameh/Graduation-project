@@ -6,13 +6,13 @@ const orderSchema = mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
     },
-    orderTime: {
-      type: Date,
-      required: true,
-    },
     restuarant: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Restaurant",
+    },
+    orderTime: {
+      type: Date,
+      required: true,
     },
     people: {
       type: Number,

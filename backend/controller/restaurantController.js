@@ -14,21 +14,27 @@ const getRestaurants = asyncHandler(async (req, res) => {
 // @access Private for admins only
 const addRestaurant = asyncHandler(async (req, res) => {
   if (
-    !req.body.title ||
-    !req.body.locations ||
-    !req.body.type ||
     !req.body.logo ||
+    !req.body.description ||
+    !req.body.title ||
+    !req.body.type ||
+    !req.body.locations ||
+    !req.body.opens ||
+    !req.body.closes ||
     !req.body.discount ||
     !req.body.rate
   ) {
     res.status(400);
-    throw new Error("Please add all inputs");
+    throw new Error(console.log(res));
   }
   const restaurant = await restaurantModel.create({
     logo: req.body.logo,
     title: req.body.title,
+    description: req.body.description,
     locations: req.body.locations,
     type: req.body.type,
+    opens: req.body.opens,
+    closes: req.body.closes,
     rate: req.body.rate,
     discount: req.body.discount,
   });

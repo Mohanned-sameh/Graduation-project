@@ -30,7 +30,7 @@ const registerAdmin = asyncHandler(async (req, res) => {
     email,
     password: hashedPassword,
     phoneNumber,
-    isAdmin,
+    isAdmin: true,
   });
   if (admin) {
     res.status(201).json({

@@ -24,7 +24,7 @@ function Login() {
         toastId: "success",
         position: "top-center",
       });
-      navigate("/");
+      navigate(-2);
       console.log(user);
     }
     dispatch(reset);

@@ -21,15 +21,15 @@ function Header() {
   };
   return (
     <header
-      className="text-xl border-b-4 rounded-sm border-orange-400"
-      style={{ backgroundColor: "wheat" }}
+      className="text-xl border-b-2 rounded-sm border-green-400"
+      // style={{ backgroundColor: "wheat" }}
     >
       <div className=" flex justify-between max-sm:mx-0 lg:mx-20">
         <Link to="/" className="ml-20 max-sm:ml-10 max-md:ml-0">
           <img
             src={logo}
             alt="logo"
-            className=" w-44 transition-all duration-500 hover:animate-pulse"
+            className=" h-32 transition-all duration-500 hover:animate-pulse"
           />
         </Link>
         <ul className="mr-20 gap-5 my-auto text-green-700 max-md:mr-10">

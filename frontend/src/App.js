@@ -8,6 +8,7 @@ import Register from "./pages/Register";
 import RestaurantDetails from "./pages/RestaurantDetails";
 import Restaurants from "./pages/Restaurants";
 import { ToastContainer } from "react-toastify";
+import Notfound from "./pages/Notfound";
 import "react-toastify/dist/ReactToastify.css";
 function App() {
   return (
@@ -20,12 +21,16 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/restaurants" element={<Restaurants />} />
-            <Route path="/restaurantsDetails" element={<RestaurantDetails />} />
+            <Route path="*" element={<Notfound />} />
+            <Route
+              path="/restaurantsDetails/:id"
+              element={<RestaurantDetails />}
+            />
           </Routes>
           <Footer />
         </div>
-        <ToastContainer />
       </Router>
+      <ToastContainer />
     </>
   );
 }
