@@ -37,6 +37,7 @@ const addRestaurant = asyncHandler(async (req, res) => {
     closes: req.body.closes,
     rate: req.body.rate,
     discount: req.body.discount,
+    menu: [req.body.menu],
   });
   res.status(200).json(restaurant);
 });

@@ -1,11 +1,11 @@
 const IMAGES = [
   {
     id: 1,
-    image: "restaurantsImages/lapalmeraie.jpeg",
+    image: "restaurantsImages/taboon.png",
   },
   {
     id: 2,
-    image: "restaurantsImages/dosBros.png",
+    image: "restaurantsImages/esca.jpeg",
   },
   {
     id: 3,
@@ -21,7 +21,7 @@ const IMAGES = [
   },
   {
     id: 6,
-    image: "restaurantsImages/esca.jpeg",
+    image: "restaurantsImages/dosBros.png",
   },
   {
     id: 7,
@@ -30,6 +30,10 @@ const IMAGES = [
   {
     id: 8,
     image: "restaurantsImages/paneveno.jpeg",
+  },
+  {
+    id: 9,
+    image: "restaurantsImages/lapalmeraie.jpeg",
   },
 ];
 export default IMAGES;
