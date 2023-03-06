@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import Spinner from "../components/Spinner";
 import {
@@ -13,10 +13,11 @@ function RestaurantDetails() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { user } = useSelector((state) => state.auth);
-  const { restaurants, isError, isLoading, message } = useSelector(
+
+  const { restaurants, isLoading, isError, message } = useSelector(
     (state) => state.restaurants
   );
-  const { description, logo, locations, type, title, opens, closes } =
+  const { logo, title, description, opens, closes, type, locations } =
     restaurants;
   useEffect(() => {
     if (isError) {
@@ -26,11 +27,10 @@ function RestaurantDetails() {
       navigate("/login");
     }
     dispatch(getRestaurantDetails(id));
-
     return () => {
-      dispatch(reset);
+      reset();
     };
-  }, [id, dispatch, isError, message, user, navigate]);
+  }, [dispatch, id, user, isError, message, navigate]);
   if (isLoading) {
     <Spinner />;
   }
@@ -58,9 +58,11 @@ function RestaurantDetails() {
             </div>
             <div className="border-t-2 border-green-500 mt-5">
               <div className="mt-10 flex align-middle justify-center gap-5  ">
-                <button className="border-2 p-2 hover:p-4 rounded-3xl border-green-500 border-opacity-60 hover:border-opacity-100 transition-all duration-500 ">
-                  Order now
-                </button>
+                <Link to={`/book/${id}`}>
+                  <button className="border-2 p-2 hover:p-4 rounded-3xl border-green-500 border-opacity-60 hover:border-opacity-100 transition-all duration-500 ">
+                    Book now
+                  </button>
+                </Link>
                 <button className="border-2 p-2 hover:p-4 rounded-3xl border-green-500 border-opacity-60 hover:border-opacity-100 transition-all duration-500 ">
                   Check the menu
                 </button>

@@ -25,7 +25,6 @@ function Login() {
         position: "top-center",
       });
       navigate(-2);
-      console.log(user);
     }
     dispatch(reset);
   }, [user, isError, isSuccess, message, navigate, dispatch]);

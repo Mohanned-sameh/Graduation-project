@@ -7,6 +7,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import RestaurantDetails from "./pages/RestaurantDetails";
 import Restaurants from "./pages/Restaurants";
+import Book from "./pages/Book";
 import { ToastContainer } from "react-toastify";
 import Notfound from "./pages/Notfound";
 import "react-toastify/dist/ReactToastify.css";
@@ -21,11 +22,12 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/restaurants" element={<Restaurants />} />
-            <Route path="*" element={<Notfound />} />
+            <Route path="/book/:id" element={<Book />} />
             <Route
               path="/restaurantsDetails/:id"
               element={<RestaurantDetails />}
             />
+            <Route path="*" element={<Notfound />} />
           </Routes>
           <Footer />
         </div>

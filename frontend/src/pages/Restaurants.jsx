@@ -1,10 +1,8 @@
-import { FaSearch } from "react-icons/fa";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Spinner from "../components/Spinner";
 import RestaurantItem from "../components/RestaurantItem";
 import { toast } from "react-toastify";
-// import restaurantService from "../features/restaurants/restaurantsService";
 import {
   getRestaurants,
   reset,
@@ -12,7 +10,6 @@ import {
 import { Link } from "react-router-dom";
 
 function Restaurants() {
-  // const [restaurants, setRestaurants] = useState([]);
   const dispatch = useDispatch();
   const { restaurants, isLoading, isError, message } = useSelector(
     (state) => state.restaurants
@@ -21,11 +18,8 @@ function Restaurants() {
     if (isError) {
       toast.error(message);
     }
-    // restaurantService.getRestaurants().then((data) => setRestaurants(data));
     dispatch(getRestaurants());
-    return () => {
-      dispatch(reset);
-    };
+    dispatch(reset);
   }, [isError, message, dispatch]);
 
   if (isLoading) {

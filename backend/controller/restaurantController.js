@@ -10,7 +10,7 @@ const getRestaurants = asyncHandler(async (req, res) => {
 });
 
 // @desc insert new restaurant
-// @route POST /api/restaurant
+// @route POST /api/restaurants
 // @access Private for admins only
 const addRestaurant = asyncHandler(async (req, res) => {
   if (
@@ -25,7 +25,7 @@ const addRestaurant = asyncHandler(async (req, res) => {
     !req.body.rate
   ) {
     res.status(400);
-    throw new Error(console.log(res));
+    throw new Error(console.log(res.statusMessage));
   }
   const restaurant = await restaurantModel.create({
     logo: req.body.logo,
@@ -37,7 +37,6 @@ const addRestaurant = asyncHandler(async (req, res) => {
     closes: req.body.closes,
     rate: req.body.rate,
     discount: req.body.discount,
-    menu: [req.body.menu],
   });
   res.status(200).json(restaurant);
 });
