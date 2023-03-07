@@ -1,7 +1,7 @@
 const asyncHandler = require("express-async-handler");
-const Order = require("../models/orderModel.js");
-const User = require("../models/userModel.js");
-const Restuarant = require("../models/restaurantModel.js");
+const Order = require("../db/models/orderModel.js");
+const User = require("../db/models/userModel.js");
+const Restuarant = require("../db/models/restaurantModel.js");
 
 const getOrder = asyncHandler(async (req, res) => {
   const order = await Order.find({ user: req.user.id });

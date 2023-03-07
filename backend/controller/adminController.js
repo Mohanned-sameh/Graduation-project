@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const asyncHandler = require("express-async-handler");
-const adminModel = require("../models/adminModel");
+const adminModel = require("../db/models/adminModel");
 
 // @desc Register new admin
 // @route POST /api/admins
