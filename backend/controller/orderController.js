@@ -1,23 +1,24 @@
 const asyncHandler = require("express-async-handler");
 const Order = require("../models/orderModel.js");
 const User = require("../models/userModel.js");
-const Restaurant = require("../models/restaurantModel.js");
+const Restuarant = require("../models/restaurantModel.js");
 
 const getOrder = asyncHandler(async (req, res) => {
-  const order = await Order.find({ user: req.user });
+  const order = await Order.find({ user: req.user.id });
   res.status(200).json(order);
 });
 
 const setOrder = asyncHandler(async (req, res) => {
-  if (!req.body.orderTime || !req.body.people) {
+  if (!req.body.orderTime || !req.body.people || !req.body.orderDate) {
     res.status(400);
     throw new Error("Please fill all the fields");
   }
   const order = await Order.create({
-    orderTime: new Date(req.body.orderTime),
-    user: req.user,
-    people: req.people,
-    restuarant: req.params.id,
+    user: req.user.id,
+    restaurant: req.body.restaurant,
+    orderTime: req.body.orderTime,
+    people: req.body.people,
+    orderDate: req.body.orderDate,
   });
   res.status(200).json(order);
 });

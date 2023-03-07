@@ -1,45 +1,51 @@
 import axios from "axios";
 
-const API_URL = "/api/order";
+const API_URL = "/api/order/";
 
 //create new order
-const createOrder = async (orderData) => {
-  try {
-    const response = await axios.post(API_URL, orderData);
-    return response.data;
-  } catch (error) {
-    console.error(error);
-  }
+const createOrder = async (orderData, token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  const response = await axios.post(API_URL, orderData, config);
+  return response.data;
 };
 
 // Get order
-const getOrder = async () => {
-  try {
-    const response = await axios.get(API_URL);
-    if (response.status === 200) {
-      return response.data;
-    }
-  } catch (error) {
-    console.error(error);
-  }
+const getOrder = async (token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  const response = await axios.get(API_URL, config);
+  return response.data;
 };
 
-const editOrder = async (restaurantId, restaurantDetails) => {
-  try {
-    const response = await axios.put(API_URL + restaurantId, restaurantDetails);
-    return response.data;
-  } catch (error) {
-    console.error(error);
-  }
+const editOrder = async (orderId, restaurantDetails, token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  const response = await axios.put(
+    API_URL + orderId,
+    restaurantDetails,
+    config
+  );
+  return response.data;
 };
 
-const deleteOrder = async (restaurantId) => {
-  try {
-    const response = await axios.delete(API_URL, restaurantId);
-    return response.data;
-  } catch (error) {
-    console.error(error);
-  }
+const deleteOrder = async (orderId, token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  const response = await axios.delete(API_URL + orderId, config);
+  return response.data;
 };
 const orderService = {
   getOrder,

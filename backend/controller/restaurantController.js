@@ -25,7 +25,7 @@ const addRestaurant = asyncHandler(async (req, res) => {
     !req.body.rate
   ) {
     res.status(400);
-    throw new Error(console.log(res.statusMessage));
+    throw new Error("fill in all the fields please");
   }
   const restaurant = await restaurantModel.create({
     logo: req.body.logo,

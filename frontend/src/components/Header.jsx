@@ -21,7 +21,8 @@ function Header() {
   };
   return (
     <header
-      className="text-xl border-b-2 rounded-sm border-green-400"
+      className="text-xl border-b-2 rounded-sm border-black"
+      style={{ backgroundColor: "#0D3c4f" }}
       // style={{ backgroundColor: "wheat" }}
     >
       <div className=" flex justify-between max-sm:mx-0 lg:mx-20">

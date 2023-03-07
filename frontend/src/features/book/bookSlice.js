@@ -13,7 +13,8 @@ export const createBook = createAsyncThunk(
   "book/create",
   async (bookData, thunkAPI) => {
     try {
-      return await bookService.createOrder(bookData);
+      const token = thunkAPI.getState().auth.user.token;
+      return await bookService.createOrder(bookData, token);
     } catch (error) {
       const message =
         (error.response &&
@@ -27,29 +28,26 @@ export const createBook = createAsyncThunk(
 );
 
 // get Book
-export const getBook = createAsyncThunk(
-  "book/get",
-  async (bookId, thunkAPI) => {
-    try {
-      return await bookService.getOrder(bookId);
-    } catch (error) {
-      const message =
-        (error.response &&
-          error.response.data &&
-          error.response.data.message) ||
-        error.message ||
-        error.toString();
-      return thunkAPI.rejectWithValue(message);
-    }
+export const getBook = createAsyncThunk("book/get", async (_, thunkAPI) => {
+  try {
+    const token = thunkAPI.getState().auth.user.token;
+    return await bookService.getOrder(token);
+  } catch (error) {
+    const message =
+      (error.response && error.response.data && error.response.data.message) ||
+      error.message ||
+      error.toString();
+    return thunkAPI.rejectWithValue(message);
   }
-);
+});
 
 // edit Book
 export const editBook = createAsyncThunk(
   "book/edit",
   async (bookId, bookData, thunkAPI) => {
     try {
-      return await bookService.editOrder(bookId, bookData);
+      const token = thunkAPI.getState().auth.user.token;
+      return await bookService.editOrder(bookId, bookData, token);
     } catch (error) {
       const message =
         (error.response &&
@@ -66,7 +64,9 @@ export const deleteBook = createAsyncThunk(
   "book/delete",
   async (id, thunkAPI) => {
     try {
-      return await bookService.deleteOrder(id);
+      const token = thunkAPI.getState().auth.user.token;
+
+      return await bookService.deleteOrder(id, token);
     } catch (error) {
       const message =
         (error.response &&

@@ -9,8 +9,8 @@ import {
 } from "../features/restaurants/restaurantsSlice";
 
 function RestaurantDetails() {
-  const { id } = useParams();
   const dispatch = useDispatch();
+  const { id } = useParams();
   const navigate = useNavigate();
   const { user } = useSelector((state) => state.auth);
 

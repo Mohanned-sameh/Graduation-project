@@ -6,17 +6,20 @@ const orderSchema = mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
     },
-    restuarant: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Restaurant",
+    restaurant: {
+      type: String,
     },
     orderTime: {
-      type: Date,
-      required: true,
+      type: String,
+      required: [true, "Please fill the orderTime"],
+    },
+    orderDate: {
+      type: String,
+      required: [true, "Please fill the date"],
     },
     people: {
       type: Number,
-      required: true,
+      required: [true, "Please fill the People"],
     },
   },
   {

@@ -70,15 +70,13 @@ function Restaurants() {
               {restaurants.length > 0 ? (
                 <>
                   {restaurants.map((restaurant) => {
-                    return !restaurant.discount ? (
+                    return (
                       <Link to={`/restaurantsDetails/${restaurant._id}`}>
                         <RestaurantItem
                           restaurant={restaurant}
                           key={restaurant._id}
                         />
                       </Link>
-                    ) : (
-                      ""
                     );
                   })}
                 </>

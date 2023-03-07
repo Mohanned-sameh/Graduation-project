@@ -22,11 +22,11 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/restaurants" element={<Restaurants />} />
-            <Route path="/book/:id" element={<Book />} />
             <Route
               path="/restaurantsDetails/:id"
               element={<RestaurantDetails />}
             />
+            <Route path="/book/:id" element={<Book />} />
             <Route path="*" element={<Notfound />} />
           </Routes>
           <Footer />

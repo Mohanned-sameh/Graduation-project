@@ -3,8 +3,6 @@ const dotenv = require("dotenv").config();
 const port = process.env.PORT;
 const { errorHandler } = require("./middleware/errorMiddleware.js");
 const connectDB = require("./config/db.js");
-const colors = require("colors");
-const path = require("path");
 
 connectDB();
 
