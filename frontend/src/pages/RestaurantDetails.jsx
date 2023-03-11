@@ -68,12 +68,16 @@ function RestaurantDetails() {
                     Book now
                   </button>
                 </Link>
-                <button
-                  onClick={menuToggle}
-                  className="border-2 p-2 hover:p-3 rounded-3xl border-[#034275] border-opacity-60 hover:border-opacity-100 transition-all duration-500 "
-                >
-                  Check the menu
-                </button>
+                {menu ? (
+                  <button
+                    onClick={menuToggle}
+                    className="border-2 p-2 hover:p-3 rounded-3xl border-[#034275] border-opacity-60 hover:border-opacity-100 transition-all duration-500 "
+                  >
+                    Check the menu
+                  </button>
+                ) : (
+                  ""
+                )}
               </div>
             </div>
             {hiddenmenu ? (
