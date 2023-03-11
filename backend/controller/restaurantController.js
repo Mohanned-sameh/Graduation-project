@@ -22,10 +22,16 @@ const addRestaurant = asyncHandler(async (req, res) => {
     !req.body.opens ||
     !req.body.closes ||
     !req.body.discount ||
-    !req.body.rate
+    !req.body.rate ||
+    !req.body.menu
   ) {
     res.status(400);
     throw new Error("fill in all the fields please");
+  }
+  const restaurantModel = await restaurantModel.findOne({ title });
+  if (restaurantModel) {
+    res.status(400);
+    throw new Error("restaurant already exists");
   }
   const restaurant = await restaurantModel.create({
     logo: req.body.logo,
@@ -37,6 +43,7 @@ const addRestaurant = asyncHandler(async (req, res) => {
     closes: req.body.closes,
     rate: req.body.rate,
     discount: req.body.discount,
+    menu: req.body.menu,
   });
   res.status(200).json(restaurant);
 });

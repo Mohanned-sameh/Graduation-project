@@ -13,6 +13,11 @@ const setOrder = asyncHandler(async (req, res) => {
     res.status(400);
     throw new Error("Please fill all the fields");
   }
+  const orderExists = await Order.findOne({ restaurant });
+  if (orderExists) {
+    res.status(400);
+    throw new Error("Order already exists");
+  }
   const order = await Order.create({
     user: req.user.id,
     restaurant: req.body.restaurant,

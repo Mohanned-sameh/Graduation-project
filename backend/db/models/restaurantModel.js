@@ -38,6 +38,10 @@ const restaurantSchema = mongoose.Schema({
     type: Boolean,
     required: [true, "please insert the discount"],
   },
+  menu: {
+    type: String,
+    required: [true, "Please add a menu"],
+  },
 });
 
 module.exports = mongoose.model("restaurant", restaurantSchema);

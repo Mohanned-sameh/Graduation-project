@@ -93,7 +93,7 @@ export const bookSlice = createSlice({
       .addCase(createBook.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.book.push(action.payload);
+        state.book = action.payload;
       })
       .addCase(createBook.rejected, (state, action) => {
         state.isLoading = false;

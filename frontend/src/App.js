@@ -9,6 +9,7 @@ import RestaurantDetails from "./pages/RestaurantDetails";
 import Restaurants from "./pages/Restaurants";
 import Book from "./pages/Book";
 import { ToastContainer } from "react-toastify";
+import BookDetails from "./pages/BookDetails";
 import Notfound from "./pages/Notfound";
 import "react-toastify/dist/ReactToastify.css";
 function App() {
@@ -26,6 +27,7 @@ function App() {
               path="/restaurantsDetails/:id"
               element={<RestaurantDetails />}
             />
+            <Route path="/book/details" element={<BookDetails />} />
             <Route path="/book/:id" element={<Book />} />
             <Route path="*" element={<Notfound />} />
           </Routes>

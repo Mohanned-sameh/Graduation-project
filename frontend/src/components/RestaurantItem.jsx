@@ -2,12 +2,12 @@ function RestaurantItem({ restaurant }) {
   // const { restaurants } = restaurant;
   if (!!!restaurant) return;
   return (
-    <div className="text-center flex flex-col ml-10 max-sm:ml-0 max-sm:py-5 border-2 border-green-500  gap-5 shadow-xl rounded-3xl shadow-slate-500 hover:p-2 p-1 hover:animate-pulse hover:cursor-pointer transition-all duration-500">
+    <div className="text-center flex flex-col ml-10 max-sm:ml-0 max-sm:py-5 border-2 hover:border-[#034275]  shadow-[#3c8eb8]  gap-5 shadow-xl rounded-3xl hover:p-2 p-1 hover:animate-pulse hover:cursor-pointer transition-all duration-500">
       <div className="p-5">
         <img
           src={restaurant.logo}
           alt={restaurant.title}
-          className="rounded-full w-40 border-b-2 border-green-500 "
+          className="rounded-full w-40 border-b-2 border-[#034275] "
         />
       </div>
       <div className="text-lg text-left px-5 py-2">

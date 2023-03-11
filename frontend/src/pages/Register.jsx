@@ -70,7 +70,7 @@ function Register() {
   }
   return (
     <>
-      <section className="flex mb-20 mt-10 border-4 max-sm:m-0 max-md:m-0 border-green-400 border-opacity-40 rounded-3xl flex-col text-center mx-52 pb-20">
+      <section className="flex mb-20 mt-10 border-4 max-sm:m-0 max-md:m-0 text-[#3c8eb8] border-[#034275] border-opacity-40 rounded-3xl flex-col text-center mx-52 pb-20">
         <div className="flex flex-col text-2xl mt-10">
           <h1 className="font-bold flex justify-center gap-2">
             <FaUser />
@@ -163,9 +163,9 @@ function Register() {
           <div>
             <button
               type="submit"
-              className=" hover:w-40 border-4 border-green-400 border-opacity-35 w-32 py-2 transition-all duration-500 hover:p-3 rounded-2xl"
+              className=" hover:px-7 border-4 border-[#034275] border-opacity-35 p-5 rounded-[35%] transition-all duration-500"
             >
-              Submit
+              Register
             </button>
           </div>
         </form>
