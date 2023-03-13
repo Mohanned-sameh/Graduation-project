@@ -16,8 +16,12 @@ function Profile({ onLogout, user }) {
     if (isError) {
       toast.error(message);
     }
-    dispatch(getBook());
-    dispatch(reset());
+    if (user) {
+      dispatch(getBook());
+    }
+    return () => {
+      dispatch(reset());
+    };
   }, [dispatch, isError, message, user]);
 
   const mouseLeave = () => {
@@ -42,7 +46,7 @@ function Profile({ onLogout, user }) {
       {visibile ? (
         <>
           {!user ? (
-            <ul className="fixed bg-[#0D3c4f] p-5 right-[2%] rounded-2xl ">
+            <ul className=" absolute bg-[#0D3c4f] p-5 right-[2%] rounded-2xl ">
               <li className="border-b-2 border-[#034275] p-2 my-2 hover:opacity-70">
                 <Link to="/">Home</Link>
               </li>
@@ -63,7 +67,7 @@ function Profile({ onLogout, user }) {
               </li>
             </ul>
           ) : (
-            <ul className="fixed bg-[#0D3c4f] p-5 right-[2%] rounded-2xl">
+            <ul className=" absolute bg-[#0D3c4f] p-5 right-[2%] rounded-2xl">
               <li className="border-b-2 border-[#034275] p-2 my-2 hover:opacity-70">
                 <Link to="/">Home</Link>
               </li>

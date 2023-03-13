@@ -10,31 +10,21 @@ function BookDetails() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const { book, isError, isLoading, message } = useSelector(
-    (state) => state.book
-  );
-  // const { restaurants } = useSelector((state) => state.restaurants);
+  const { book, isLoading, message } = useSelector((state) => state.book);
   const { user } = useSelector((state) => state.auth);
   useEffect(() => {
-    if (isError) {
-      toast.error(message, { toastId: message });
-    }
-    if (!user) {
-      navigate("/login");
-    }
     dispatch(getBook());
-    // dispatch(getRestaurantDetails(book[0].restaurant));
     dispatch(reset());
-  }, [dispatch, message, isError, navigate, user]);
+  }, [dispatch, message, navigate, user]);
   if (isLoading) {
     return <Spinner />;
   }
   return (
-    <div>
+    <div className="w-full my-20">
       {book.length > 0 ? (
         <div>
           {book.map((book) => (
-            <BookItem key={book._id} book={book} />
+            <BookItem key={book._id} book={book} user={user} />
           ))}
         </div>
       ) : (

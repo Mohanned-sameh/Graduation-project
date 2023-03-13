@@ -13,7 +13,7 @@ function Book() {
   const { isLoading, isError, message } = useSelector((state) => state.book);
   useEffect(() => {
     if (isError) {
-      toast.error(message, { toastId: message });
+      toast.error(message, { toastId: "error", position: "top-center" });
     }
     if (!user) {
       navigate("/login");
@@ -24,7 +24,7 @@ function Book() {
     return <Spinner />;
   }
   return (
-    <div className="w-full justify-center flex text-center align-middle flex-col my-20 ">
+    <div className="w-full justify-center text-center align-middle flex-col my-20">
       <BookForm id={id} />
     </div>
   );
