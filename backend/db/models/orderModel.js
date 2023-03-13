@@ -7,7 +7,8 @@ const orderSchema = mongoose.Schema(
       ref: "User",
     },
     restaurant: {
-      type: String,
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Restaurant",
     },
     orderTime: {
       type: String,

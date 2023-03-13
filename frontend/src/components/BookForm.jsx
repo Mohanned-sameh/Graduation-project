@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { createBook } from "../features/book/bookSlice";
+import { createBook, reset } from "../features/book/bookSlice";
 function BookForm({ id }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -28,7 +28,8 @@ function BookForm({ id }) {
     };
     dispatch(createBook(formData));
     setFormdata(formData);
-    // navigate("/book/details");
+    dispatch(reset);
+    navigate("/book/details");
   };
   return (
     <>
@@ -66,7 +67,6 @@ function BookForm({ id }) {
           <input
             type="number"
             min="1"
-            max="10"
             name="people"
             id="people"
             value={people}

@@ -1,7 +1,7 @@
 const asyncHandler = require("express-async-handler");
 const Order = require("../db/models/orderModel.js");
 const User = require("../db/models/userModel.js");
-const Restuarant = require("../db/models/restaurantModel.js");
+const Restaurant = require("../db/models/restaurantModel.js");
 
 const getOrder = asyncHandler(async (req, res) => {
   const order = await Order.find({ user: req.user.id });
@@ -13,13 +13,13 @@ const setOrder = asyncHandler(async (req, res) => {
     res.status(400);
     throw new Error("Please fill all the fields");
   }
-  const orderExists = await Order.findOne({ restaurant });
+  const orderExists = await Order.findOne({ Restaurant });
   if (orderExists) {
     res.status(400);
     throw new Error("Order already exists");
   }
   const order = await Order.create({
-    user: req.user.id,
+    user: req.user,
     restaurant: req.body.restaurant,
     orderTime: req.body.orderTime,
     people: req.body.people,

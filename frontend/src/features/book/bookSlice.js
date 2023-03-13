@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import bookService from "./bookService";
+
 const initialState = {
   book: [],
   isError: false,
@@ -11,10 +12,10 @@ const initialState = {
 // create book
 export const createBook = createAsyncThunk(
   "book/create",
-  async (bookData, thunkAPI) => {
+  async (orderData, thunkAPI) => {
     try {
       const token = thunkAPI.getState().auth.user.token;
-      return await bookService.createOrder(bookData, token);
+      return await bookService.createOrder(orderData, token);
     } catch (error) {
       const message =
         (error.response &&
@@ -44,10 +45,10 @@ export const getBook = createAsyncThunk("book/get", async (_, thunkAPI) => {
 // edit Book
 export const editBook = createAsyncThunk(
   "book/edit",
-  async (bookId, bookData, thunkAPI) => {
+  async (orderId, orderData, thunkAPI) => {
     try {
       const token = thunkAPI.getState().auth.user.token;
-      return await bookService.editOrder(bookId, bookData, token);
+      return await bookService.editOrder(orderId, orderData, token);
     } catch (error) {
       const message =
         (error.response &&
@@ -62,11 +63,11 @@ export const editBook = createAsyncThunk(
 
 export const deleteBook = createAsyncThunk(
   "book/delete",
-  async (id, thunkAPI) => {
+  async (orderId, thunkAPI) => {
     try {
       const token = thunkAPI.getState().auth.user.token;
 
-      return await bookService.deleteOrder(id, token);
+      return await bookService.deleteOrder(orderId, token);
     } catch (error) {
       const message =
         (error.response &&

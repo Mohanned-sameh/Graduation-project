@@ -33,7 +33,7 @@ function RestaurantDetails() {
     }
     dispatch(getRestaurantDetails(id));
     return () => {
-      reset();
+      dispatch(reset());
     };
   }, [dispatch, id, user, isError, message, navigate]);
   if (isLoading) {

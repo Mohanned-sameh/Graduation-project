@@ -16,18 +16,13 @@ function Profile({ onLogout, user }) {
     if (isError) {
       toast.error(message);
     }
-    if (user) {
-      dispatch(getBook());
-    }
-    return () => {
-      dispatch(reset());
-    };
+    dispatch(getBook());
+    dispatch(reset());
   }, [dispatch, isError, message, user]);
 
   const mouseLeave = () => {
     setVisible(false);
   };
-
   const mouseEnter = () => {
     setVisible(!visibile);
   };
@@ -77,7 +72,7 @@ function Profile({ onLogout, user }) {
               </li>
               {book.length > 0 ? (
                 <li className="border-b-2 border-[#034275] p-2 my-2 hover:opacity-70">
-                  <Link to="/book/details">Check your reservations</Link>
+                  <Link to="/book/details/">Check your reservations</Link>
                 </li>
               ) : (
                 <li className="border-b-2 border-[#034275] p-2 my-2 hover:opacity-70">

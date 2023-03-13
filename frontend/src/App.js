@@ -27,8 +27,8 @@ function App() {
               path="/restaurantsDetails/:id"
               element={<RestaurantDetails />}
             />
-            <Route path="/book/details" element={<BookDetails />} />
             <Route path="/book/:id" element={<Book />} />
+            <Route path="/book/details" element={<BookDetails />} />
             <Route path="*" element={<Notfound />} />
           </Routes>
           <Footer />

@@ -1,17 +1,20 @@
-import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { reset, getBook } from "../features/book/bookSlice";
+import { getBook, reset } from "../features/book/bookSlice";
 import { toast } from "react-toastify";
 import Spinner from "../components/Spinner";
+// import { getRestaurantDetails } from "../features/restaurants/restaurantsSlice";
+import BookItem from "../components/BookItem";
 function BookDetails() {
-  const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { user } = useSelector((state) => state.auth);
-  const { isLoading, isError, message, book } = useSelector(
+  const dispatch = useDispatch();
+
+  const { book, isError, isLoading, message } = useSelector(
     (state) => state.book
   );
-
+  // const { restaurants } = useSelector((state) => state.restaurants);
+  const { user } = useSelector((state) => state.auth);
   useEffect(() => {
     if (isError) {
       toast.error(message, { toastId: message });
@@ -20,18 +23,23 @@ function BookDetails() {
       navigate("/login");
     }
     dispatch(getBook());
-
-    return () => {
-      dispatch(reset());
-    };
-  });
-
+    // dispatch(getRestaurantDetails(book[0].restaurant));
+    dispatch(reset());
+  }, [dispatch, message, isError, navigate, user]);
   if (isLoading) {
     return <Spinner />;
   }
   return (
     <div>
-      <div>{book.map((book) => console.log(book))}</div>
+      {book.length > 0 ? (
+        <div>
+          {book.map((book) => (
+            <BookItem key={book._id} book={book} />
+          ))}
+        </div>
+      ) : (
+        ""
+      )}
     </div>
   );
 }
