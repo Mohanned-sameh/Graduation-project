@@ -36,11 +36,11 @@ function Restaurants() {
             <div className="w-full border-2 rounded-3xl border-[#034275]  shadow-[#3c8eb8]  mb-20 shadow-xl max-sm:py-10 max-sm:px-2 max-sm:mx-0  justify-start gap-5 max-sm:my-10 flex py-10 flex-wrap ">
               {restaurants.map((restaurant) => {
                 return restaurant.discount ? (
-                  <Link to={`/restaurantsDetails/${restaurant._id}`}>
-                    <RestaurantItem
-                      restaurant={restaurant}
-                      key={restaurant._id}
-                    />
+                  <Link
+                    to={`/restaurantsDetails/${restaurant._id}`}
+                    key={restaurant._id}
+                  >
+                    <RestaurantItem restaurant={restaurant} />
                   </Link>
                 ) : (
                   ""
@@ -54,28 +54,16 @@ function Restaurants() {
             <h2 className="ml-10">All Restaurants</h2>
           </div>
           <div className="flex flex-col jusify-start mb-10 px-5 gap-10  max-sm:p-2">
-            {/* <div className="flex gap-1 outline-none transition-all duration-500  justify-center w-full p-2 my-1 hover:py-3 rounded-full outline-opacity-25 outline-slate-500 outline-2">
-              <input
-                type="text"
-                name="search"
-                id="search"
-                placeholder="Search"
-                className="w-full outline-none"
-              />
-              <button type="submit" className="mx-2">
-                <FaSearch size="1.5em" />
-              </button>
-            </div> */}
             <div className="w-full border-2 rounded-3xl border-[#034275]  shadow-[#3c8eb8] shadow-xl max-sm:py-10 justify-start gap-5 max-sm:my-10 flex py-10 flex-wrap ">
               {restaurants.length > 0 ? (
                 <>
                   {restaurants.map((restaurant) => {
                     return (
-                      <Link to={`/restaurantsDetails/${restaurant._id}`}>
-                        <RestaurantItem
-                          restaurant={restaurant}
-                          key={restaurant._id}
-                        />
+                      <Link
+                        to={`/restaurantsDetails/${restaurant._id}`}
+                        key={restaurant._id}
+                      >
+                        <RestaurantItem restaurant={restaurant} />
                       </Link>
                     );
                   })}

@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { createBook, reset } from "../features/book/bookSlice";
 function BookForm({ id }) {
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
   const [formData, setFormdata] = useState({
     orderTime: "",
     orderDate: "",
@@ -28,6 +28,9 @@ function BookForm({ id }) {
     dispatch(createBook(formData));
     setFormdata(formData);
     dispatch(reset);
+    if (formData) {
+      navigate("/book/details");
+    }
   };
   let min = new Date().toISOString().split("T")[0];
 
@@ -72,16 +75,15 @@ function BookForm({ id }) {
               min="1"
               name="people"
               id="people"
-              value={people}
-              placeholder="Number of people"
-              className="outline-none transition-all duration-500 rounded-full p-2 my-1 focus:p-4 focus:w-full outline-2 outline-slate-500 outline-opacity-25"
+              value={people || 1}
+              className="outline-none - transition-all duration-500 rounded-full p-2 my-1 focus:p-4 focus:w-full outline-2 outline-slate-500 outline-opacity-25"
               onChange={onChange}
             />
           </div>
           <div>
             <button
               type="submit"
-              className=" hover:px-7 border-4 border-[#034275] border-opacity-35 p-5 rounded-[35%] transition-all duration-500"
+              className="border-2 p-3 hover:p-5 rounded-3xl border-[#034275] border-opacity-60 hover:border-opacity-100 transition-all duration-500 "
             >
               Submit
             </button>

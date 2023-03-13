@@ -15,7 +15,13 @@ function RestaurantItem({ restaurant }) {
           <h4>Type: {restaurant.type}</h4>
           <h5 className=" ">
             Rating:{" "}
-            {restaurant.rate <= 2 ? "😥" : restaurant.rate === 3 ? "🙂" : "❤️‍🔥"}
+            {restaurant.rate <= 2
+              ? "😥"
+              : restaurant.rate >= 3
+              ? "🙂"
+              : restaurant.rate >= 4
+              ? "❤️‍🔥"
+              : ""}
           </h5>
         </div>
         {restaurant.discount ? (

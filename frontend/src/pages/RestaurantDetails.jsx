@@ -64,14 +64,14 @@ function RestaurantDetails() {
             <div className="border-t-2 border-[#034275]  mt-5">
               <div className="mt-10 flex align-middle justify-center gap-5  ">
                 <Link to={`/book/${id}`}>
-                  <button className="border-2 p-2 hover:p-3 rounded-3xl border-[#034275] border-opacity-60 hover:border-opacity-100 transition-all duration-500 ">
+                  <button className="border-2 p-3 hover:p-5 rounded-3xl border-[#034275] border-opacity-60 hover:border-opacity-100 transition-all duration-500 ">
                     Book now
                   </button>
                 </Link>
                 {menu ? (
                   <button
                     onClick={menuToggle}
-                    className="border-2 p-2 hover:p-3 rounded-3xl border-[#034275] border-opacity-60 hover:border-opacity-100 transition-all duration-500 "
+                    className="border-2 p-3 hover:p-5 rounded-3xl border-[#034275] border-opacity-60 hover:border-opacity-100 transition-all duration-500 "
                   >
                     Check the menu
                   </button>

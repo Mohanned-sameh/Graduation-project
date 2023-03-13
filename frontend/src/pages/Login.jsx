@@ -24,7 +24,7 @@ function Login() {
         toastId: "success",
         position: "top-center",
       });
-      navigate(-2);
+      navigate("/restaurants");
     }
     dispatch(reset);
   }, [user, isError, isSuccess, message, navigate, dispatch]);
@@ -90,7 +90,7 @@ function Login() {
           <div>
             <button
               type="submit"
-              className=" hover:px-7 border-4 border-[#034275] border-opacity-35 p-5 rounded-[35%] transition-all duration-500"
+              className="border-2 p-3 hover:p-5 rounded-3xl border-[#034275] border-opacity-60 hover:border-opacity-100 transition-all duration-500 "
             >
               Login
             </button>

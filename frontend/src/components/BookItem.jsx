@@ -4,18 +4,23 @@ import {
   getRestaurantDetails,
   reset,
 } from "../features/restaurants/restaurantsSlice";
+import { deleteBook } from "../features/book/bookSlice";
+import { useNavigate } from "react-router-dom";
 
 function BookItem({ book, user }) {
   const { restaurants } = useSelector((state) => state.restaurants);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { title, locations, opens, closes } = restaurants;
   useEffect(() => {
     dispatch(getRestaurantDetails(book.restaurant));
     dispatch(reset());
-    console.log(restaurants);
   }, []);
-
-  const { orderTime, orderDate, people } = book;
+  const onClick = () => {
+    dispatch(deleteBook(_id));
+    navigate("/restaurants");
+  };
+  const { orderTime, orderDate, people, _id } = book;
   let hours = parseInt(orderTime) % 12;
   return (
     <div className="border-2 w-[50%] mx-auto p-20 rounded-2xl shadow-2xl border-[#034275] shadow-[#3c8eb8]">
@@ -36,6 +41,9 @@ function BookItem({ book, user }) {
           <h1>Location: {locations}</h1>
           <h1>Opens: {opens}</h1>
           <h1>Closes: {closes}</h1>
+        </div>
+        <div className="border-2 p-3 hover:p-5 rounded-3xl border-[#034275] border-opacity-60 hover:border-opacity-100 transition-all duration-500 ">
+          <button onClick={onClick}>Cancel</button>
         </div>
       </div>
     </div>
