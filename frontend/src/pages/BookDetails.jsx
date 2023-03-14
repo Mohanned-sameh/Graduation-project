@@ -13,7 +13,12 @@ function BookDetails() {
   const { book, isLoading, message } = useSelector((state) => state.book);
   const { user } = useSelector((state) => state.auth);
   useEffect(() => {
-    dispatch(getBook());
+    if (!user) {
+      navigate("/login");
+    }
+    if (user) {
+      dispatch(getBook());
+    }
     dispatch(reset());
   }, [dispatch, message, navigate, user]);
   if (isLoading) {
