@@ -15,16 +15,16 @@ app.use("/api/admins", require("./routes/adminRoutes"));
 app.use("/api/restaurants", require("./routes/restaurantsRoutes"));
 app.use("/api/order", require("./routes/orderRoutes.js"));
 
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "../frontend/build")));
-  app.get("*", (req, res) => {
-    res.sendFile(__dirname, "../", "frontend", "build", "index.html");
-  });
-} else {
-  app.get("/", (req, res) => {
-    res.send("Website is still on development");
-  });
-}
+// if (process.env.NODE_ENV === "production") {
+//   app.use(express.static(path.join(__dirname, "../frontend/build")));
+//   app.get("*", (req, res) => {
+//     res.sendFile(__dirname, "../", "frontend", "build", "index.html");
+//   });
+// } else {
+//   app.get("/", (req, res) => {
+//     res.send("Website is still on development");
+//   });
+// }
 app.use(errorHandler);
 
 app.listen(port);
