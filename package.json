@@ -7,7 +7,9 @@
     "start": "node backend/server.js",
     "server": "nodemon backend/server.js",
     "client": "npm start --prefix frontend",
-    "dev": "concurrently \"npm run build\" \"npm run client\"",
+    "buildClient":"npm run build --prefix frontend",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "build":"concurrently \"npm run start\" \"npm run buildClient\"",
     "seed": "node backend/db/seed.js"
   },
   "author": "Team 12",
@@ -20,7 +22,8 @@
     "express-async-handler": "^1.2.0",
     "faker": "5.5.3",
     "jsonwebtoken": "^9.0.0",
-    "mongoose": "^6.9.2"
+    "mongoose": "^6.9.2",
+    "path": "^0.12.7"
   },
   "devDependencies": {
     "concurrently": "^7.6.0",
