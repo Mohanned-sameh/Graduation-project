@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import { getBook, reset } from "../features/book/bookSlice";
 import { toast } from "react-toastify";
 import Spinner from "../components/Spinner";
-// import { getRestaurantDetails } from "../features/restaurants/restaurantsSlice";
 import BookItem from "../components/BookItem";
 function BookDetails() {
   const navigate = useNavigate();
