@@ -1,7 +1,6 @@
 import axios from "axios";
 
-const API_URL =
-  "https://e7gezly-service.onrender.com/api/restaurants/api/users/";
+const API_URL = "https://e7gezly-service.onrender.com/api/users/";
 
 setInterval(() => {
   if (Date.now() - 86400 > Date.now()) {
