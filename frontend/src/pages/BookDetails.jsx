@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { getBook, reset } from "../features/book/bookSlice";
-import { toast } from "react-toastify";
 import Spinner from "../components/Spinner";
 import BookItem from "../components/BookItem";
 function BookDetails() {
