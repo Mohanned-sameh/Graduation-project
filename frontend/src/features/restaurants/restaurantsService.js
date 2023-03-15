@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const API_URL = "/api/restaurants/";
+const API_URL =
+  "https://e7gezly-service.onrender.com/api/restaurants/api/restaurants/";
 
 // Create new restaurant
 const createRestaurant = async (restaurantData) => {
