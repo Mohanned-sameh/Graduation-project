@@ -14,10 +14,10 @@ function BookDetails() {
     if (!user) {
       navigate("/login");
     }
-    if (user) {
-      dispatch(getBook());
-    }
-    dispatch(reset());
+    dispatch(getBook());
+    return () => {
+      dispatch(reset());
+    };
   }, [dispatch, message, navigate, user]);
   if (isLoading) {
     return <Spinner />;

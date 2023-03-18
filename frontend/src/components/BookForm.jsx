@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { createBook, reset } from "../features/book/bookSlice";
+import { toast } from "react-toastify";
 function BookForm({ id }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -29,7 +30,8 @@ function BookForm({ id }) {
     setFormdata(formData);
     dispatch(reset);
     if (formData) {
-      navigate("/book/details");
+      navigate("/book/details/");
+      document.location.reload();
     }
   };
   let min = new Date().toISOString().split("T")[0];
