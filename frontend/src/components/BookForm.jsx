@@ -28,7 +28,9 @@ function BookForm({ id }) {
     dispatch(createBook(formData));
     setFormdata(formData);
     dispatch(reset);
-    navigate("/book/details/");
+    if (formData) {
+      navigate("/book/details/");
+    }
   };
   let min = new Date().toISOString().split("T")[0];
 

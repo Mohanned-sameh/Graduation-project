@@ -19,7 +19,7 @@ function Restaurants() {
       toast.error(message);
     }
     dispatch(getRestaurants());
-    dispatch(reset);
+    dispatch(reset());
   }, [isError, message, dispatch]);
 
   if (isLoading) {
