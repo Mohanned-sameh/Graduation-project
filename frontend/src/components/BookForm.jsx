@@ -28,8 +28,8 @@ function BookForm({ id }) {
     dispatch(createBook(formData));
     setFormdata(formData);
     dispatch(reset);
-    navigate("/book/details/");
     if (formData) {
+      navigate("/book/details/");
       document.location.reload();
     }
   };
