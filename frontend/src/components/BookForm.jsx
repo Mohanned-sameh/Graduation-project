@@ -31,7 +31,7 @@ function BookForm({ id }) {
       dispatch(reset);
       navigate("/book/details/");
 
-      document.location.reload();
+      window.location.reload(true);
     }
   };
   let min = new Date().toISOString().split("T")[0];
