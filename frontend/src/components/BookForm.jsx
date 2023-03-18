@@ -25,11 +25,13 @@ function BookForm({ id }) {
       people,
       restaurant: id,
     };
-    dispatch(createBook(formData));
-    setFormdata(formData);
-    dispatch(reset);
     if (formData) {
+      dispatch(createBook(formData));
+      setFormdata(formData);
+      dispatch(reset);
       navigate("/book/details/");
+
+      window.location.reload();
     }
   };
   let min = new Date().toISOString().split("T")[0];
