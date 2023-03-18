@@ -5,7 +5,7 @@ const port = process.env.PORT;
 const { errorHandler } = require("./middleware/errorMiddleware.js");
 const path = require("path");
 const connectDB = require("./config/db.js");
-
+const path = require("path");
 connectDB();
 
 const app = express();
@@ -34,4 +34,4 @@ if (process.env.NODE_ENV === "production") {
 }
 app.use(errorHandler);
 
-app.listen(port, () => console.log(`Server running on PORT ${port}`));
+app.listen(port);
