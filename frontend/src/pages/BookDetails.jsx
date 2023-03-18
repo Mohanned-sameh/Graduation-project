@@ -14,7 +14,9 @@ function BookDetails() {
     if (!user) {
       navigate("/login");
     }
-    dispatch(getBook());
+    if (user) {
+      dispatch(getBook());
+    }
     return () => {
       dispatch(reset());
     };
