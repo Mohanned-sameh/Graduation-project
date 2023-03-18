@@ -20,7 +20,7 @@ function BookDetails() {
     return () => {
       dispatch(reset());
     };
-  }, [dispatch, message, navigate, user]);
+  }, [dispatch, message, navigate, user, book]);
   if (isLoading) {
     return <Spinner />;
   }
