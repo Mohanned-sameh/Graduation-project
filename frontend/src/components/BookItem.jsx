@@ -19,7 +19,7 @@ function BookItem({ book, user }) {
     return () => {
       dispatch(reset());
     };
-  }, [book.restaurant, dispatch, book]);
+  }, []);
   const onClick = () => {
     dispatch(deleteBook(_id));
     navigate("/restaurants");
