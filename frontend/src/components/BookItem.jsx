@@ -13,12 +13,8 @@ function BookItem({ book, user }) {
   const navigate = useNavigate();
   const { title, locations, opens, closes } = restaurants;
   useEffect(() => {
-    if (book) {
-      dispatch(getRestaurantDetails(book.restaurant));
-    }
-    return () => {
-      dispatch(reset());
-    };
+    dispatch(getRestaurantDetails(book.restaurant));
+    dispatch(reset());
   }, []);
   const onClick = () => {
     dispatch(deleteBook(_id));
@@ -34,7 +30,8 @@ function BookItem({ book, user }) {
         <div className="flex flex-wrap gap-5 justify-center my-5">
           <h1>Reservation date: {orderDate}</h1>
           <h1>
-            Reservation time: {hours >= 12 ? hours + " AM" : hours + " PM"}
+            Reservation time:{" "}
+            {hours >= 12 ? hours + " " + "AM" : hours + " " + "PM"}
           </h1>
           <h1>Seats: {people}</h1>
         </div>

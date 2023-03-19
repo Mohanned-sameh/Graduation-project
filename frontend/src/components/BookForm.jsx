@@ -27,9 +27,11 @@ function BookForm({ id }) {
     };
     dispatch(createBook(formData));
     setFormdata(formData);
-    dispatch(reset());
-    navigate("/book/details/");
-    window.location.reload();
+    dispatch(reset);
+    if (formData) {
+      navigate("/book/details");
+      document.location.reload();
+    }
   };
   let min = new Date().toISOString().split("T")[0];
 
@@ -74,7 +76,7 @@ function BookForm({ id }) {
               min="1"
               name="people"
               id="people"
-              value={people || 0}
+              value={people || 1}
               className="outline-none - transition-all duration-500 rounded-full p-2 my-1 focus:p-4 focus:w-full outline-2 outline-slate-500 outline-opacity-25"
               onChange={onChange}
             />

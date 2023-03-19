@@ -11,13 +11,8 @@ function BookDetails() {
   const { book, isLoading, message } = useSelector((state) => state.book);
   const { user } = useSelector((state) => state.auth);
   useEffect(() => {
-    if (!user) {
-      navigate("/login");
-    }
     dispatch(getBook());
-    return () => {
-      dispatch(reset());
-    };
+    dispatch(reset());
   }, [dispatch, message, navigate, user]);
   if (isLoading) {
     return <Spinner />;
