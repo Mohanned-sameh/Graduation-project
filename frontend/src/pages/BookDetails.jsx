@@ -12,7 +12,9 @@ function BookDetails() {
   const { user } = useSelector((state) => state.auth);
   useEffect(() => {
     dispatch(getBook());
-    dispatch(reset());
+    return () => {
+      dispatch(reset());
+    };
   }, [dispatch, message, navigate, user]);
   if (isLoading) {
     return <Spinner />;
