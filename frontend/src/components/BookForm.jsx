@@ -25,14 +25,9 @@ function BookForm({ id }) {
       people,
       restaurant: id,
     };
-    if (formData) {
-      dispatch(createBook(formData));
-      setFormdata(formData);
-      dispatch(reset);
-      navigate("/book/details/");
-
-      window.location.reload(true);
-    }
+    dispatch(createBook(formData));
+    setFormdata(formData);
+    navigate("/book/details/");
   };
   let min = new Date().toISOString().split("T")[0];
 
