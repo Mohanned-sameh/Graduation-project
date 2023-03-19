@@ -16,7 +16,9 @@ function BookItem({ book, user }) {
     if (book) {
       dispatch(getRestaurantDetails(book.restaurant));
     }
-    dispatch(reset());
+    return () => {
+      dispatch(reset());
+    };
   }, [book.restaurant, dispatch, book]);
   const onClick = () => {
     dispatch(deleteBook(_id));

@@ -15,7 +15,9 @@ function BookDetails() {
       navigate("/login");
     }
     dispatch(getBook());
-    dispatch(reset());
+    return () => {
+      dispatch(reset());
+    };
   }, [dispatch, message, navigate, user]);
   if (isLoading) {
     return <Spinner />;
