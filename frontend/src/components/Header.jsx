@@ -18,15 +18,15 @@ function Header() {
     dispatch(reset());
     navigate("/");
   };
+  const onClick = () => {
+    window.location.reload();
+  };
 
   return (
     <header className="text-xl border-b-2 rounded-sm bg-gradient-to-r animate-text from-[#0D3c4f] to-[#517183] border-[#3c8eb8] flex justify-between px-20 py-5 text-[#3c8eb8]">
-      <Link
-        to="/"
-        className="ml-20 max-sm:ml-10 max-md:ml-0"
-        onClick={window.location.reload()}
-      >
+      <Link to="/" className="ml-20 max-sm:ml-10 max-md:ml-0">
         <img
+          onClick={onClick}
           src={logo}
           alt="logo"
           className="w-20 transition-all duration-500 hover:animate-pulse"
