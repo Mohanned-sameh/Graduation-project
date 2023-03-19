@@ -3,8 +3,8 @@ require("dotenv").config();
 const express = require("express");
 const port = process.env.PORT;
 const { errorHandler } = require("./middleware/errorMiddleware.js");
-const connectDB = require("./config/db.js");
 const path = require("path");
+const connectDB = require("./config/db.js");
 connectDB();
 
 const app = express();
@@ -21,7 +21,10 @@ if (process.env.NODE_ENV === "production") {
       dotfiles: "allow",
     })
   );
+<<<<<<< HEAD
   app.set("suppressDeprecationWarnings", true);
+=======
+>>>>>>> 2245c29acfe72271d61f6a95846b49e31ab61952
   app.get("*", (req, res) => {
     res.sendFile(
       path.join(__dirname, "../", "frontend", "build", "index.html")

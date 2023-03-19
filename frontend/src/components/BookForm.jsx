@@ -29,7 +29,7 @@ function BookForm({ id }) {
     setFormdata(formData);
     dispatch(reset);
     if (formData) {
-      navigate("/book/details/");
+      navigate("/book/details");
       document.location.reload();
     }
   };
