@@ -5,18 +5,6 @@ import { Link } from "react-router-dom";
 import ProfileBook from "./ProfileBook";
 function Profile({ onLogout, user }) {
   const [visibile, setVisible] = useState(false);
-<<<<<<< HEAD
-=======
-  useEffect(() => {
-    if (isError) {
-      toast.error(message);
-    }
-    dispatch(getBook());
-    return () => {
-      dispatch(reset());
-    };
-  }, [dispatch, isError, message, user]);
->>>>>>> 2245c29acfe72271d61f6a95846b49e31ab61952
 
   const mouseLeave = () => {
     setVisible(false);
