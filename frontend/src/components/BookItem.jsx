@@ -13,13 +13,11 @@ function BookItem({ book, user }) {
   const navigate = useNavigate();
   const { title, locations, opens, closes } = restaurants;
   useEffect(() => {
-    if (book) {
-      dispatch(getRestaurantDetails(book.restaurant));
-    }
+    dispatch(getRestaurantDetails(book.restaurant));
     return () => {
       dispatch(reset());
     };
-  }, [book.restaurant, dispatch, book]);
+  }, []);
   const onClick = () => {
     dispatch(deleteBook(_id));
     navigate("/restaurants");
