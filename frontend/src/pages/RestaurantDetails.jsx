@@ -36,11 +36,12 @@ function RestaurantDetails() {
       dispatch(reset());
     };
   }, [dispatch, id, user, isError, message, navigate]);
+
   if (isLoading) {
     <Spinner />;
   }
   return (
-    <div className="m-20 text-[#3c8eb8]  text-center">
+    <div className="m-20 text-[#3c8eb8] text-lg">
       <div className="border-2 border-[#034275]  shadow-[#3c8eb8] rounded-3xl p-10 shadow-2xl ">
         <div className="flex justify-center align-middle">
           <img
@@ -50,8 +51,8 @@ function RestaurantDetails() {
           />
         </div>
         <div className="w-full flex justify-center align-middle mb-10 border-2 p-16 rounded-3xl">
-          <div className="flex gap-3 flex-col text-xl font-normal">
-            <pre className="text-2xl whitespace-pre-wrap leading-relaxed font-black text-left">
+          <div className="flex gap-3 flex-col">
+            <pre className=" whitespace-pre-wrap leading-relaxed font-semibold">
               {description}
             </pre>
             <div className="flex flex-col text-left mx-auto align-middle justify-center gap-4 my-5">
@@ -81,12 +82,13 @@ function RestaurantDetails() {
               </div>
             </div>
             {hiddenmenu ? (
-              <div className="border-2 border-solid border-[#034275] p-4 my-10 rounded-3xl flex">
+              <div className="border-2 border-solid border-[#034275] p-3 my-10 rounded-[5%]">
                 <iframe
-                  className="flex-1"
+                  className="w-full"
                   src={menu}
-                  id="menu"
                   height="500px"
+                  width="500px"
+                  id="menu"
                   title={title}
                 ></iframe>
               </div>

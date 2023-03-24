@@ -6,6 +6,7 @@ import {
 } from "../features/restaurants/restaurantsSlice";
 import { deleteBook } from "../features/book/bookSlice";
 import { useNavigate } from "react-router-dom";
+import jsPDF from "jspdf";
 
 function BookItem({ book, user }) {
   const { restaurants } = useSelector((state) => state.restaurants);
@@ -17,11 +18,30 @@ function BookItem({ book, user }) {
       dispatch(getRestaurantDetails(book.restaurant));
     }
     dispatch(reset());
-  }, [book.restaurant, dispatch, book]);
+  }, []); //eslint-disable-line react-hooks/exhaustive-deps
   const onClick = () => {
     dispatch(deleteBook(_id));
     navigate("/restaurants");
   };
+
+  const reservationData = {
+    restaurantName: restaurants.title,
+    name: user.firstName + " " + user.lastName,
+    date: book.orderDate,
+    time: book.orderTime,
+    guests: book.people,
+  };
+
+  const generatePDF = () => {
+    const doc = new jsPDF();
+    doc.text(`Restaurant name: ${reservationData.restaurantName}`, 10, 20);
+    doc.text(`Reservation for ${reservationData.name}`, 10, 30);
+    doc.text(`Date: ${reservationData.date}`, 10, 40);
+    doc.text(`Time: ${reservationData.time}`, 10, 50);
+    doc.text(`Guests: ${reservationData.guests}`, 10, 60);
+    doc.save("reservation.pdf");
+  };
+
   const { orderTime, orderDate, people, _id } = book;
   let hours = parseInt(orderTime) % 12;
   return (
@@ -31,21 +51,29 @@ function BookItem({ book, user }) {
         <hr className="w-full h-1 bg-[#034275]" />
         <div className="flex flex-wrap gap-5 justify-center my-5">
           <h1>Reservation date: {orderDate}</h1>
-          <h1>
-            Reservation time:{" "}
-            {hours >= 12 ? hours + " " + "AM" : hours + " " + "PM"}
-          </h1>
-          <h1>Seats: {people}</h1>
+          <h1>Reservation time: {hours >= 12 ? hours + "AM" : hours + "PM"}</h1>
+          <h1>Guests: {people}</h1>
         </div>
         <hr className="w-full h-1 bg-[#034275]" />
-        <div className=" flex gap-5 my-5 justify-center flex-wrap ">
-          <h1>Title: {title}</h1>
-          <h1>Location: {locations}</h1>
+        <div className=" flex gap-5 my-5 justify-center flex-wrap first-letter:capitalize">
+          <h1 className="first-letter:capitalize">{title}</h1>
+          <h1 className="first-letter:capitalize">{locations}</h1>
           <h1>Opens: {opens}</h1>
           <h1>Closes: {closes}</h1>
         </div>
-        <div className="border-2 p-3 hover:p-5 rounded-3xl border-[#034275] border-opacity-60 hover:border-opacity-100 transition-all duration-500 ">
+      </div>
+      <div className="flex justify-center gap-2">
+        <div className="border-2 p-3 hover:translate-y-2 rounded-3xl border-[#034275] border-opacity-60 hover:border-opacity-100 transition-all duration-500 ">
           <button onClick={onClick}>Cancel</button>
+        </div>
+        <div className="border-2 p-3 hover:translate-y-2 rounded-3xl border-[#034275] border-opacity-60 hover:border-opacity-100 transition-all duration-500 ">
+          <button
+            onClick={() => {
+              generatePDF();
+            }}
+          >
+            Save as PDF
+          </button>
         </div>
       </div>
     </div>
