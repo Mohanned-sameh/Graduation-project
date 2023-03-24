@@ -36,11 +36,12 @@ function RestaurantDetails() {
       dispatch(reset());
     };
   }, [dispatch, id, user, isError, message, navigate]);
+
   if (isLoading) {
     <Spinner />;
   }
   return (
-    <div className="m-20 text-[#3c8eb8]  text-center">
+    <div className="m-20 text-[#3c8eb8]  text-center text-xl">
       <div className="border-2 border-[#034275]  shadow-[#3c8eb8] rounded-3xl p-10 shadow-2xl ">
         <div className="flex justify-center align-middle">
           <img

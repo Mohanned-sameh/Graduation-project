@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { getBook, reset } from "../features/book/bookSlice";
 import Spinner from "../components/Spinner";
 import BookItem from "../components/BookItem";
+
 function BookDetails() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -16,6 +17,7 @@ function BookDetails() {
     }
     dispatch(reset());
   }, [dispatch, message, navigate, user]);
+
   if (isLoading) {
     return <Spinner />;
   }

@@ -16,7 +16,9 @@ function Profile({ onLogout, user }) {
     if (isError) {
       toast.error(message);
     }
-    dispatch(getBook());
+    if (user) {
+      dispatch(getBook());
+    }
     return () => {
       dispatch(reset());
     };

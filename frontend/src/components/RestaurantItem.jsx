@@ -6,23 +6,28 @@ function RestaurantItem({ restaurant }) {
         <img
           src={restaurant.logo}
           alt={restaurant.title}
-          className="rounded-full w-40 border-b-2 border-[#034275] "
+          className="rounded-[50%] w-[150px] border-b-2 border-[#034275] "
         />
       </div>
-      <div className="text-lg text-left px-5 py-2">
-        <div className="flex flex-col align-middle justify-evenly gap-2 w-40">
-          <h1>Title: {restaurant.title}</h1>
-          <h4>Type: {restaurant.type}</h4>
-          <h5 className=" ">
-            Rating:{" "}
-            {restaurant.rate <= 2
-              ? "😥"
-              : restaurant.rate >= 3
-              ? "🙂"
-              : restaurant.rate >= 4
-              ? "❤️‍🔥"
-              : ""}
-          </h5>
+      <div className="text-lg text-left px-5 flex flex-col py-10">
+        <div className="flex align-middle gap-2 flex-wrap flex-col w-40 h-[250px]">
+          <div className="text-center flex flex-col gap-5">
+            <h1 className="text-2xl first-letter:capitalize">
+              {restaurant.title}
+            </h1>
+            <h4>{restaurant.type}</h4>
+            <hr />
+            <h5>
+              Rating:{" "}
+              {restaurant.rate <= 2
+                ? "Bad"
+                : restaurant.rate >= 3
+                ? "Decent"
+                : restaurant.rate >= 4
+                ? "Amazing"
+                : ""}
+            </h5>
+          </div>
         </div>
         {restaurant.discount ? (
           <h5 className=" mt-4 text-base opacity-80 text-center">
