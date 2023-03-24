@@ -3,9 +3,14 @@ import { CgProfile } from "react-icons/cg";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import ProfileBook from "./ProfileBook";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
+import { getBook, reset } from "../features/book/bookSlice";
 function Profile({ onLogout, user }) {
   const [visibile, setVisible] = useState(false);
-<<<<<<< HEAD
+  const { isError, message } = useSelector((state) => state.book);
+  const dispatch = useDispatch();
   useEffect(() => {
     if (isError) {
       toast.error(message);
@@ -17,8 +22,6 @@ function Profile({ onLogout, user }) {
       dispatch(reset());
     };
   }, [dispatch, isError, message, user]);
-=======
->>>>>>> abe59f0f3512ae25d9a6868859fbc25bc69daf19
 
   const mouseLeave = () => {
     setVisible(false);
