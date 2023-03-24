@@ -21,6 +21,7 @@ if (process.env.NODE_ENV === "production") {
       dotfiles: "allow",
     })
   );
+  app.set("suppressDeprecationWarnings", true);
   app.get("*", (req, res) => {
     res.sendFile(
       path.join(__dirname, "../", "frontend", "build", "index.html")

@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { getBook, reset } from "../features/book/bookSlice";
 import Spinner from "../components/Spinner";
 import BookItem from "../components/BookItem";
+
 function BookDetails() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -11,11 +12,9 @@ function BookDetails() {
   const { book, isLoading, message } = useSelector((state) => state.book);
   const { user } = useSelector((state) => state.auth);
   useEffect(() => {
-    if (user) {
-      dispatch(getBook());
-    }
-    dispatch(reset());
-  }, [dispatch, message, navigate, user]);
+    dispatch(getBook());
+  }, [dispatch, user, message, navigate]);
+
   if (isLoading) {
     return <Spinner />;
   }
