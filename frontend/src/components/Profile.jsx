@@ -5,54 +5,43 @@ import { Link } from "react-router-dom";
 import ProfileBook from "./ProfileBook";
 function Profile({ onLogout, user }) {
   const [visibile, setVisible] = useState(false);
-<<<<<<< HEAD
-  useEffect(() => {
-    if (isError) {
-      toast.error(message);
-    }
-    if (user) {
-      dispatch(getBook());
-    }
-    return () => {
-      dispatch(reset());
-    };
-  }, [dispatch, isError, message, user]);
-=======
->>>>>>> abe59f0f3512ae25d9a6868859fbc25bc69daf19
 
   const mouseLeave = () => {
     setVisible(false);
   };
   const mouseEnter = () => {
-    setVisible(!visibile);
+    setVisible(true);
   };
   return (
     <div
-      className="my-auto text-center"
+      className="my-auto text-center "
       onMouseEnter={mouseEnter}
       onMouseLeave={mouseLeave}
     >
-      <div className="text-[#3c8eb8] m-auto mr-7">
+      <div
+        className="text-[#3c8eb8] m-auto mr-10
+      "
+      >
         <CgProfile size="40px" name="profile" />
       </div>
 
       {visibile ? (
         <>
           {!user ? (
-            <ul className=" absolute bg-[#0D3c4f] p-5 right-[2%] rounded-2xl ">
-              <li className="border-b-2 border-[#034275] p-2 my-2 hover:opacity-70">
+            <ul className=" absolute bg-[#0D3c4f] p-5 right-16 rounded-2xl transition-all">
+              <li className="border-b-2 border-[#034275] p-2 my-2 hover:opacity-70 hover:translate-y-1 transition-all">
                 <Link to="/">Home</Link>
               </li>
-              <li className="border-b-2 border-[#034275] p-2 my-2 hover:opacity-70">
+              <li className="border-b-2 border-[#034275] p-2 my-2 hover:opacity-70 hover:translate-y-1 transition-all">
                 <Link to="/restaurants">Restaurants</Link>
               </li>
-              <li className="border-b-2 border-[#034275] p-2 my-2 hover:opacity-70">
+              <li className="border-b-2 border-[#034275] p-2 my-2 hover:opacity-70 hover:translate-y-1 transition-all">
                 <Link to="/login">
                   <FaSignInAlt className=" mx-auto" />
                   Login
                 </Link>
               </li>
-              <li className="border-b-2 border-[#034275] p-2 my-2 hover:opacity-70">
+              <li className="border-b-2 border-[#034275] p-2 my-2 hover:opacity-70 hover:translate-y-1 transition-all">
                 <Link to="/register">
                   <FaUser className=" mx-auto" />
                   Register
@@ -60,15 +49,15 @@ function Profile({ onLogout, user }) {
               </li>
             </ul>
           ) : (
-            <ul className=" absolute bg-[#0D3c4f] p-5 right-[2%] rounded-2xl">
-              <li className="border-b-2 border-[#034275] p-2 my-2 hover:opacity-70">
+            <ul className=" absolute bg-[#0D3c4f] p-5 right-0 rounded-2xl">
+              <li className="border-b-2 border-[#034275] p-2 my-2 hover:opacity-70 hover:translate-y-1 transition-all">
                 <Link to="/">Home</Link>
               </li>
-              <li className="border-b-2 border-[#034275] p-2 my-2 hover:opacity-70">
+              <li className="border-b-2 border-[#034275] p-2 my-2 hover:opacity-70 hover:translate-y-1 transition-all">
                 <Link to="/restaurants">Restaurants</Link>
               </li>
               <ProfileBook user={user} />
-              <li className="border-b-2 border-[#034275] p-2 my-2 hover:opacity-70">
+              <li className="border-b-2 border-[#034275] p-2 my-2 hover:opacity-70 hover:translate-y-1 transition-all">
                 <button onClick={onLogout}>
                   <FaSignOutAlt className=" mx-auto" />
                   Logout
