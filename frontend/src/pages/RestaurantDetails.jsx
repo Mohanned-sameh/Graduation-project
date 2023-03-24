@@ -82,12 +82,13 @@ function RestaurantDetails() {
               </div>
             </div>
             {hiddenmenu ? (
-              <div className="border-2 border-solid border-[#034275] p-4 my-10 rounded-3xl flex">
+              <div className="border-2 border-solid border-[#034275] p-3 my-10 rounded-[5%]">
                 <iframe
-                  className="flex-1"
+                  className="w-full"
                   src={menu}
-                  id="menu"
                   height="500px"
+                  width="500px"
+                  id="menu"
                   title={title}
                 ></iframe>
               </div>

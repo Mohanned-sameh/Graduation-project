@@ -55,16 +55,18 @@ function BookItem({ book, user }) {
           <h1>Guests: {people}</h1>
         </div>
         <hr className="w-full h-1 bg-[#034275]" />
-        <div className=" flex gap-5 my-5 justify-center flex-wrap ">
-          <h1>Title: {title}</h1>
-          <h1>Location: {locations}</h1>
+        <div className=" flex gap-5 my-5 justify-center flex-wrap first-letter:capitalize">
+          <h1 className="first-letter:capitalize">{title}</h1>
+          <h1 className="first-letter:capitalize">{locations}</h1>
           <h1>Opens: {opens}</h1>
           <h1>Closes: {closes}</h1>
         </div>
-        <div className="border-2 p-3 hover:p-5 rounded-3xl border-[#034275] border-opacity-60 hover:border-opacity-100 transition-all duration-500 ">
+      </div>
+      <div className="flex justify-center gap-2">
+        <div className="border-2 p-3 hover:translate-y-2 rounded-3xl border-[#034275] border-opacity-60 hover:border-opacity-100 transition-all duration-500 ">
           <button onClick={onClick}>Cancel</button>
         </div>
-        <div className="border-2 p-3 hover:p-5 rounded-3xl border-[#034275] border-opacity-60 hover:border-opacity-100 transition-all duration-500 ">
+        <div className="border-2 p-3 hover:translate-y-2 rounded-3xl border-[#034275] border-opacity-60 hover:border-opacity-100 transition-all duration-500 ">
           <button
             onClick={() => {
               generatePDF();
