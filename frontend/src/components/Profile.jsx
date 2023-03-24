@@ -47,19 +47,19 @@ function Profile({ onLogout, user }) {
         <>
           {!user ? (
             <ul className=" absolute bg-[#0D3c4f] p-5 right-[2%] rounded-2xl ">
-              <li className="border-b-2 border-[#034275] p-2 my-2 hover:opacity-70">
+              <li className="border-b-2 border-[#034275] p-2 my-2 hover:opacity-70 hover:-translate-y-1 transition-all">
                 <Link to="/">Home</Link>
               </li>
-              <li className="border-b-2 border-[#034275] p-2 my-2 hover:opacity-70">
+              <li className="border-b-2 border-[#034275] p-2 my-2 hover:opacity-70 hover:-translate-y-1 transition-all">
                 <Link to="/restaurants">Restaurants</Link>
               </li>
-              <li className="border-b-2 border-[#034275] p-2 my-2 hover:opacity-70">
+              <li className="border-b-2 border-[#034275] p-2 my-2 hover:opacity-70 hover:-translate-y-1 transition-all">
                 <Link to="/login">
                   <FaSignInAlt className=" mx-auto" />
                   Login
                 </Link>
               </li>
-              <li className="border-b-2 border-[#034275] p-2 my-2 hover:opacity-70">
+              <li className="border-b-2 border-[#034275] p-2 my-2 hover:opacity-70 hover:-translate-y-1 transition-all">
                 <Link to="/register">
                   <FaUser className=" mx-auto" />
                   Register
@@ -68,22 +68,22 @@ function Profile({ onLogout, user }) {
             </ul>
           ) : (
             <ul className=" absolute bg-[#0D3c4f] p-5 right-[2%] rounded-2xl">
-              <li className="border-b-2 border-[#034275] p-2 my-2 hover:opacity-70">
+              <li className="border-b-2 border-[#034275] p-2 my-2 hover:opacity-70 hover:-translate-y-1 duration-500 transition-all">
                 <Link to="/">Home</Link>
               </li>
-              <li className="border-b-2 border-[#034275] p-2 my-2 hover:opacity-70">
+              <li className="border-b-2 border-[#034275] p-2 my-2 hover:opacity-70 hover:-translate-y-1 duration-500 transition-all">
                 <Link to="/restaurants">Restaurants</Link>
               </li>
               {book.length > 0 ? (
-                <li className="border-b-2 border-[#034275] p-2 my-2 hover:opacity-70">
+                <li className="border-b-2 border-[#034275] p-2 my-2 hover:opacity-70 hover:-translate-y-1 duration-500 transition-all">
                   <Link to="/book/details/">Check your reservations</Link>
                 </li>
               ) : (
-                <li className="border-b-2 border-[#034275] p-2 my-2 hover:opacity-70">
+                <li className="border-b-2 border-[#034275] p-2 my-2 hover:opacity-70 hover:-translate-y-1 duration-500 transition-all">
                   No Reservations
                 </li>
               )}
-              <li className="border-b-2 border-[#034275] p-2 my-2 hover:opacity-70">
+              <li className="border-b-2 border-[#034275] p-2 my-2 hover:opacity-70 hover:-translate-y-1 duration-500 transition-all">
                 <button onClick={onLogout}>
                   <FaSignOutAlt className=" mx-auto" />
                   Logout

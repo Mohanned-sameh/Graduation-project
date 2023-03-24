@@ -33,7 +33,7 @@ shadow-[#3c8eb8] max-sm:shadow-3xl shadow-2xl max-sm:flex max-sm:flex-wrap max-m
                 src={item.image}
                 alt="logo"
                 className="aspect-square h-28 max-sm:h-12 border-2 border-[#3c8eb8]
-                 hover:border-4 max-sm:mr-5 rounded-full hover:h-32 max-md:h-16 mr-4 max-md:mr-4 max-md:hover:h-20 max-sm:hover:h-12 ease-in-out transition-all duration-500"
+                 hover:-translate-y-2 max-sm:mr-5 rounded-full max-md:h-16 mr-4 max-md:mr-4 max-md:hover:h-20 max-sm:hover:h-12 ease-in-out transition-all duration-500"
               />
             </div>
           ))}

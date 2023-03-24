@@ -70,7 +70,7 @@ function Login() {
               id="email"
               value={email}
               placeholder="Email"
-              className="outline-none transition-all duration-500 rounded-full p-2 my-1 focus:p-4 focus:w-full outline-2 outline-slate-500 outline-opacity-25"
+              className="outline-none transition-all duration-500 rounded-full focus:translate-x-1 p-2 my-1 outline-2 outline-slate-500 outline-opacity-25"
               onChange={onChange}
             />
           </div>
@@ -82,7 +82,7 @@ function Login() {
               id="password"
               value={password}
               placeholder="Password"
-              className="outline-none transition-all duration-500 rounded-full p-2 my-1 focus:p-4 focus:w-full outline-2 outline-slate-500 outline-opacity-25"
+              className="outline-none transition-all duration-500 rounded-full p-2 my-1 focus:translate-x-1 outline-2 outline-slate-500 outline-opacity-25"
               onChange={onChange}
             />
           </div>
@@ -90,7 +90,7 @@ function Login() {
           <div>
             <button
               type="submit"
-              className="border-2 p-3 hover:p-5 rounded-3xl border-[#034275] border-opacity-60 hover:border-opacity-100 transition-all duration-500 "
+              className="border-2 p-3 hover:-translate-y-1 rounded-3xl border-[#034275] border-opacity-60 hover:border-opacity-100 transition-all duration-500 "
             >
               Login
             </button>
