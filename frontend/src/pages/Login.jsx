@@ -15,7 +15,7 @@ function Login() {
   useEffect(() => {
     if (isError) {
       toast.error(message, {
-        toastId: "error",
+        toastId: message,
         position: "top-center",
       });
     }

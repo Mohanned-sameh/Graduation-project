@@ -6,7 +6,7 @@ import {
 } from "../features/restaurants/restaurantsSlice";
 import { deleteBook } from "../features/book/bookSlice";
 import { useNavigate } from "react-router-dom";
-
+import jspdf from "jspdf";
 function BookItem({ book, user }) {
   const { restaurants } = useSelector((state) => state.restaurants);
   const dispatch = useDispatch();
@@ -15,13 +15,14 @@ function BookItem({ book, user }) {
   useEffect(() => {
     dispatch(getRestaurantDetails(book.restaurant));
     dispatch(reset());
-  }, []);
+  }, []); //eslint-disable-line react-hooks/exhaustive-deps
   const onClick = () => {
     dispatch(deleteBook(_id));
     navigate("/restaurants");
   };
   const { orderTime, orderDate, people, _id } = book;
   let hours = parseInt(orderTime) % 12;
+
   return (
     <div className="border-2 w-[50%] mx-auto p-20 rounded-2xl shadow-2xl border-[#034275] shadow-[#3c8eb8]">
       <div className="flex flex-wrap justify-center align-middle gap-7 text-xl">
@@ -30,8 +31,7 @@ function BookItem({ book, user }) {
         <div className="flex flex-wrap gap-5 justify-center my-5">
           <h1>Reservation date: {orderDate}</h1>
           <h1>
-            Reservation time:{" "}
-            {hours >= 12 ? hours + " " + "AM" : hours + " " + "PM"}
+            Reservation time: {hours >= 12 ? hours + " AM" : hours + " PM"}
           </h1>
           <h1>Seats: {people}</h1>
         </div>
@@ -44,6 +44,9 @@ function BookItem({ book, user }) {
         </div>
         <div className="border-2 p-3 hover:p-5 rounded-3xl border-[#034275] border-opacity-60 hover:border-opacity-100 transition-all duration-500 ">
           <button onClick={onClick}>Cancel</button>
+        </div>
+        <div className="border-2 p-3 hover:p-5 rounded-3xl border-[#034275] border-opacity-60 hover:border-opacity-100 transition-all duration-500 ">
+          <button>Save as PDF</button>
         </div>
       </div>
     </div>
