@@ -33,7 +33,7 @@ function Restaurants() {
             <h2 className="ml-10">Hot deals</h2>
           </div>
           {restaurants.length > 0 ? (
-            <div className="w-full border-2 rounded-3xl border-[#034275] gap-5  shadow-[#3c8eb8] shadow-xl max-sm:py-10 justify-start max-sm:my-10 flex flex-wrap p-10 m-auto ">
+            <div className="w-full border-2 rounded-3xl border-[#034275] gap-5  shadow-[#3c8eb8] shadow-xl max-sm:py-10 my-10 justify-start max-sm:my-10 flex flex-wrap p-10 m-auto ">
               {restaurants.map((restaurant) => {
                 return restaurant.discount ? (
                   <Link
