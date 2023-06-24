@@ -13,7 +13,10 @@ const setOrder = asyncHandler(async (req, res) => {
     res.status(400);
     throw new Error("Please fill all the fields");
   }
-  const orderExists = await Order.findOne({ user: req.user });
+  const orderExists = await Order.findOne({
+    restaurant: req.body.restaurant,
+    orderDate: req.body.orderDate,
+  });
   if (orderExists) {
     res.status(400);
     throw new Error("Order already exists");

@@ -14,7 +14,9 @@ function BookItem({ book, user }) {
   const { title, locations, opens, closes } = restaurants;
   useEffect(() => {
     dispatch(getRestaurantDetails(book.restaurant));
-    dispatch(reset());
+    return () => {
+      dispatch(reset());
+    };
   }, []); //eslint-disable-line react-hooks/exhaustive-deps
   const onClick = () => {
     dispatch(deleteBook(_id));
