@@ -20,6 +20,7 @@ function BookDetails() {
       const fetchData = async () => {
         await dispatch(getBook());
       };
+      toast.dismiss("noReservationFound");
 
       fetchData();
     }
