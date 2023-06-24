@@ -4,19 +4,45 @@ import { useNavigate } from "react-router-dom";
 import { getBook, reset } from "../features/book/bookSlice";
 import Spinner from "../components/Spinner";
 import BookItem from "../components/BookItem";
+import { toast } from "react-toastify";
+
 function BookDetails() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const { book, isLoading, message } = useSelector((state) => state.book);
+  const { book, isLoading } = useSelector((state) => state.book);
   const { user } = useSelector((state) => state.auth);
+
   useEffect(() => {
-    dispatch(getBook());
-    dispatch(reset());
-  }, [dispatch, message, navigate, user]);
+    if (!user) {
+      navigate("/login");
+    } else {
+      const fetchData = async () => {
+        await dispatch(getBook());
+      };
+
+      fetchData();
+    }
+
+    return () => {
+      dispatch(reset());
+    };
+  }, [dispatch, navigate, user]);
+
+  useEffect(() => {
+    if (!isLoading && (!book || book.length === 0)) {
+      toast.error("No reservation found", {
+        toastId: "noReservationFound",
+        position: "top-center",
+      });
+      navigate("/restaurants");
+    }
+  }, [book, isLoading, navigate]);
+
   if (isLoading) {
     return <Spinner />;
   }
+
   return (
     <div className="w-full my-20">
       {book.length > 0 ? (

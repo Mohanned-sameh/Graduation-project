@@ -28,7 +28,7 @@ function BookForm({ id }) {
     if (formData) {
       navigate("/book/details");
       dispatch(createBook(formData));
-      window.location.reload();
+      // window.location.reload();
     }
     dispatch(reset);
   };

@@ -15,7 +15,9 @@ function Header() {
       position: "top-center",
     });
     dispatch(logout());
+
     dispatch(reset());
+
     navigate("/");
   };
 

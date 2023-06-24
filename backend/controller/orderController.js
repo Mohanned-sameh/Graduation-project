@@ -13,6 +13,7 @@ const setOrder = asyncHandler(async (req, res) => {
     res.status(400);
     throw new Error("Please fill all the fields");
   }
+
   const orderExists = await Order.findOne({
     restaurant: req.body.restaurant,
     orderDate: req.body.orderDate,
@@ -21,13 +22,26 @@ const setOrder = asyncHandler(async (req, res) => {
     res.status(400);
     throw new Error("Order already exists");
   }
+
+  const orderTimeString = req.body.orderTime;
+  const orderDateString = req.body.orderDate;
+
+  const orderDateTime = new Date(`${orderDateString}T${orderTimeString}`);
+  const currentTime = new Date();
+
+  if (orderDateTime < currentTime) {
+    res.status(400);
+    throw new Error("Order time has already passed");
+  }
+
   const order = await Order.create({
     user: req.user,
     restaurant: req.body.restaurant,
-    orderTime: req.body.orderTime,
+    orderTime: orderTimeString,
     people: req.body.people,
-    orderDate: req.body.orderDate,
+    orderDate: orderDateString,
   });
+
   res.status(200).json(order);
 });
 
@@ -61,7 +75,7 @@ const deleteOrder = asyncHandler(async (req, res) => {
     res.status(401);
     throw new Error("User not authorized");
   }
-  await order.remove(order);
+  await order.remove();
   res.status(200).json({ id: req.params.id });
 });
 

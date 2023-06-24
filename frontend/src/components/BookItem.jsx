@@ -7,6 +7,7 @@ import {
 import { deleteBook } from "../features/book/bookSlice";
 import { useNavigate } from "react-router-dom";
 import jspdf from "jspdf";
+import { toast } from "react-toastify";
 function BookItem({ book, user }) {
   const { restaurants } = useSelector((state) => state.restaurants);
   const dispatch = useDispatch();
@@ -14,10 +15,29 @@ function BookItem({ book, user }) {
   const { title, locations, opens, closes } = restaurants;
   useEffect(() => {
     dispatch(getRestaurantDetails(book.restaurant));
+
+    const orderDateTime = new Date(`${book.orderDate}T${book.orderTime}`);
+    const currentTime = new Date();
+
+    // Calculate the timeout duration (2 minutes) after the orderTime
+    const timeoutDuration =
+      orderDateTime.getTime() - currentTime.getTime() + 2 * 60 * 1000;
+
+    const deleteBookTimeout = setTimeout(() => {
+      dispatch(deleteBook(book._id)); // Pass the book ID or any necessary identifier
+      navigate("/restaurants");
+      toast.error("No reservation found", {
+        toastId: "noReservationFound",
+        position: "top-center",
+      });
+    }, timeoutDuration);
+
     return () => {
+      clearTimeout(deleteBookTimeout); // Clear the timeout if the component is unmounted before the timeout triggers
       dispatch(reset());
     };
   }, []); //eslint-disable-line react-hooks/exhaustive-deps
+
   const onClick = () => {
     dispatch(deleteBook(_id));
     navigate("/restaurants");
@@ -34,7 +54,6 @@ function BookItem({ book, user }) {
   const onSavePdf = () => {
     pdf.save("reservation.pdf");
   };
-
   return (
     <div className="border-2 w-[50%] mx-auto p-20 rounded-2xl shadow-2xl border-[#034275] shadow-[#3c8eb8]">
       <div className="flex flex-wrap justify-center align-middle gap-7 text-xl">
@@ -50,8 +69,8 @@ function BookItem({ book, user }) {
         <div className="flex flex-wrap gap-5 justify-center my-5">
           <h1>Reservation date: {orderDate}</h1>
           <h1>
-            Reservation time:{" "}
-            {orderTime >= 12 ? orderTime + " AM" : orderTime + " PM"}
+            Reservation time: {orderTime === 0 ? 12 : orderTime} :{" "}
+            {orderTime === 0 ? "AM" : "PM"}
           </h1>
           <h1>Guests: {people}</h1>
         </div>

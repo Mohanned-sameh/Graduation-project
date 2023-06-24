@@ -19,10 +19,7 @@ function Profile({ onLogout, user }) {
     if (user) {
       dispatch(getBook());
     }
-    return () => {
-      dispatch(reset());
-    };
-  }, [dispatch, isError, message, user]);
+  }, [dispatch, isError, message, user, book.length]);
 
   const mouseLeave = () => {
     setVisible(false);
@@ -34,13 +31,9 @@ function Profile({ onLogout, user }) {
     return <Spinner />;
   }
   return (
-    <div
-      className="my-auto text-center"
-      onMouseEnter={mouseEnter}
-      onMouseLeave={mouseLeave}
-    >
+    <div className="my-auto text-center z-50" onMouseLeave={mouseLeave}>
       <div className="text-[#3c8eb8] m-auto mr-7">
-        <CgProfile size="40px" name="profile" />
+        <CgProfile size="40px" name="profile" onMouseEnter={mouseEnter} />
       </div>
 
       {visibile ? (
