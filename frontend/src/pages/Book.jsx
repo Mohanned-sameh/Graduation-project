@@ -1,10 +1,10 @@
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import BookForm from "../components/BookForm";
+
 function Book() {
-  const dispatch = useDispatch();
   const { id } = useParams();
   const navigate = useNavigate();
   const { user } = useSelector((state) => state.auth);
@@ -17,7 +17,7 @@ function Book() {
     if (!user) {
       navigate("/login");
     }
-  }, [navigate, dispatch, isError, message, user]);
+  }, [navigate, isError, message, user]);
 
   return (
     <div className="w-full justify-center text-center align-middle flex-col my-20">

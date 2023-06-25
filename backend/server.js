@@ -1,7 +1,7 @@
 require("dotenv").config();
+const port = process.env.PORT;
 
 const express = require("express");
-const port = process.env.PORT;
 const { errorHandler } = require("./middleware/errorMiddleware.js");
 const connectDB = require("./config/db.js");
 const path = require("path");
@@ -11,7 +11,8 @@ connectDB();
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use("/api/users", require("./routes/userRoutes"));
+
+app.use("/api/users", require("./routes/userRowutes"));
 app.use("/api/admins", require("./routes/adminRoutes"));
 app.use("/api/restaurants", require("./routes/restaurantsRoutes"));
 app.use("/api/order", require("./routes/orderRoutes.js"));
