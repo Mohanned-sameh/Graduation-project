@@ -26,7 +26,7 @@ function BookItem({ book, user }) {
     const deleteBookTimeout = setTimeout(() => {
       dispatch(deleteBook(book._id)); // Pass the book ID or any necessary identifier
       navigate("/restaurants");
-      toast.error("No reservation found", {
+      toast.error("Reservation Expired", {
         toastId: "noReservationFound",
         position: "top-center",
       });
